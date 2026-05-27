@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* === Rupose Brand Palette === */
+  /* Background: linen off-white */
+  --background: oklch(0.98 0.005 80);
+  --foreground: oklch(0.25 0.01 60);
+
+  /* Card: warm white */
+  --card: oklch(0.975 0.006 80);
+  --card-foreground: oklch(0.25 0.01 60);
+
+  --popover: oklch(0.975 0.006 80);
+  --popover-foreground: oklch(0.25 0.01 60);
+
+  /* Primary: sage / olijfgroen */
+  --primary: oklch(0.52 0.07 140);
+  --primary-foreground: oklch(0.98 0.005 80);
+
+  /* Secondary: warm zandbeige */
+  --secondary: oklch(0.92 0.02 80);
+  --secondary-foreground: oklch(0.32 0.015 60);
+
+  /* Muted: subtle linen */
+  --muted: oklch(0.94 0.008 80);
+  --muted-foreground: oklch(0.52 0.015 70);
+
+  /* Accent: copper / terracotta */
+  --accent: oklch(0.60 0.10 42);
+  --accent-foreground: oklch(0.98 0.005 80);
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.98 0.005 80);
+
+  /* Border: soft warm grey */
+  --border: oklch(0.88 0.010 80);
+  --input: oklch(0.88 0.010 80);
+  --ring: oklch(0.52 0.07 140);
+
+  /* Custom Rupose tokens */
+  --sage: oklch(0.52 0.07 140);
+  --sage-light: oklch(0.72 0.05 140);
+  --sage-muted: oklch(0.88 0.025 140);
+  --sand: oklch(0.92 0.02 80);
+  --sand-deep: oklch(0.86 0.025 75);
+  --linen: oklch(0.98 0.005 80);
+  --copper: oklch(0.60 0.10 42);
+  --copper-light: oklch(0.75 0.07 42);
+  --brown: oklch(0.25 0.01 60);
+  --brown-muted: oklch(0.45 0.015 60);
+
+  --radius: 0.25rem;
+  --radius-card: 0.5rem;
+
+  --sidebar: oklch(0.975 0.006 80);
+  --sidebar-foreground: oklch(0.25 0.01 60);
+  --sidebar-primary: oklch(0.52 0.07 140);
+  --sidebar-primary-foreground: oklch(0.98 0.005 80);
+  --sidebar-accent: oklch(0.92 0.02 80);
+  --sidebar-accent-foreground: oklch(0.32 0.015 60);
+  --sidebar-border: oklch(0.88 0.010 80);
+  --sidebar-ring: oklch(0.52 0.07 140);
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Inter Fallback';
+  --font-serif: 'Cormorant Garamond', 'Cormorant Garamond Fallback';
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius));
+  --radius-md: calc(var(--radius) + 2px);
+  --radius-lg: var(--radius-card);
+  --radius-xl: calc(var(--radius-card) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand tokens accessible as Tailwind classes */
+  --color-sage: var(--sage);
+  --color-sage-light: var(--sage-light);
+  --color-sage-muted: var(--sage-muted);
+  --color-sand: var(--sand);
+  --color-sand-deep: var(--sand-deep);
+  --color-linen: var(--linen);
+  --color-copper: var(--copper);
+  --color-copper-light: var(--copper-light);
+  --color-brown: var(--brown);
+  --color-brown-muted: var(--brown-muted);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+}

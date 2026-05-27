@@ -1,0 +1,137 @@
+"use client";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import type { Product } from "@/lib/products";
+
+interface ProductTabsProps {
+  product: Product;
+}
+
+export function ProductTabs({ product }: ProductTabsProps) {
+  return (
+    <Tabs defaultValue="productinfo" className="w-full">
+      <TabsList className="flex w-full justify-start gap-0 bg-transparent border-b border-border rounded-none h-auto p-0 mb-8">
+        {[
+          { value: "productinfo", label: "Productinfo" },
+          { value: "specificaties", label: "Specificaties" },
+          { value: "onderhoud", label: "Onderhoud" },
+          { value: "verzending", label: "Verzending & retour" },
+        ].map((tab) => (
+          <TabsTrigger
+            key={tab.value}
+            value={tab.value}
+            className="font-sans text-sm text-brown-muted data-[state=active]:text-brown data-[state=active]:border-b-2 data-[state=active]:border-sage data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent hover:text-brown transition-colors"
+          >
+            {tab.label}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+
+      {/* Productinfo tab */}
+      <TabsContent value="productinfo" className="mt-0">
+        <div
+          className="prose prose-sm max-w-none font-sans text-brown-muted leading-relaxed
+            [&_h3]:font-serif [&_h3]:text-xl [&_h3]:font-light [&_h3]:text-brown [&_h3]:mt-6 [&_h3]:mb-3
+            [&_p]:mb-4
+            [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-4 [&_ul>li]:mb-1.5
+            [&_strong]:text-brown [&_strong]:font-medium"
+          dangerouslySetInnerHTML={{ __html: product.longDescriptionHtml }}
+        />
+      </TabsContent>
+
+      {/* Specificaties tab */}
+      <TabsContent value="specificaties" className="mt-0">
+        <dl className="divide-y divide-border">
+          {product.specifications.map((spec) => (
+            <div
+              key={spec.label}
+              className="flex flex-col sm:flex-row sm:gap-8 py-3.5"
+            >
+              <dt className="font-sans text-xs font-medium text-brown uppercase tracking-wider w-full sm:w-48 flex-shrink-0 mb-1 sm:mb-0">
+                {spec.label}
+              </dt>
+              <dd className="font-sans text-sm text-brown-muted flex-1">
+                {spec.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </TabsContent>
+
+      {/* Onderhoud tab */}
+      <TabsContent value="onderhoud" className="mt-0">
+        <div className="flex flex-col gap-5 max-w-2xl">
+          <p className="font-sans text-sm text-brown-muted leading-relaxed">
+            Goed onderhoud verlengt de levensduur van uw beddengoed aanzienlijk
+            en behoudt de kwaliteit en comfort van uw investering.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              {
+                title: "Wassen",
+                body: "Volg altijd het wasadvies op het label. De meeste producten van Rupose zijn wasbaar op 60°C voor een hygiënische reiniging.",
+              },
+              {
+                title: "Drogen",
+                body: "Gebruik bij voorkeur de droger op een lage temperatuur of laat het product luchten op een droogrek. Vermijd direct zonlicht voor gekleurde producten.",
+              },
+              {
+                title: "Opslaan",
+                body: "Bewaar schoon en droog beddengoed in een ademende katoenen zak of het originele verpakking. Vermijd plastic zakken — die houden vocht vast.",
+              },
+              {
+                title: "Luchten",
+                body: "Laat uw dekbed en kussens regelmatig luchten — het liefst in de buitenlucht op een droge dag. Dit vermindert stofmijten en frist de vulling op.",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className="bg-sand/50 rounded-sm p-4 border border-border"
+              >
+                <h4 className="font-serif text-base font-medium text-brown mb-2">
+                  {item.title}
+                </h4>
+                <p className="font-sans text-xs text-brown-muted leading-relaxed">
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </TabsContent>
+
+      {/* Verzending tab */}
+      <TabsContent value="verzending" className="mt-0">
+        <div className="flex flex-col gap-5 max-w-2xl">
+          {[
+            {
+              title: "Gratis verzending",
+              body: "Bestellingen vanaf €75 worden gratis verzonden naar Nederland en België. Voor bestellingen onder de €75 rekenen wij €4,95 verzendkosten.",
+            },
+            {
+              title: "Levertijd",
+              body: "Producten die op voorraad zijn worden op werkdagen voor 16:00 uur besteld dezelfde dag verzonden. Verwachte levertijd: 1–3 werkdagen.",
+            },
+            {
+              title: "30 dagen retourrecht",
+              body: "Niet tevreden? U heeft 30 dagen retourrecht vanaf de ontvangstdatum. Het product dient ongebruikt, ongewassen en in de originele verpakking te worden geretourneerd.",
+            },
+            {
+              title: "Retourprocedure",
+              body: "Stuur een e-mail naar info@rupose.nl met uw bestelnummer en de reden van retour. Wij sturen u de retourinstructies toe. Retourkosten zijn voor de klant, tenzij sprake is van een defect product.",
+            },
+          ].map((item) => (
+            <div key={item.title} className="flex flex-col gap-1.5">
+              <h4 className="font-serif text-base font-medium text-brown">
+                {item.title}
+              </h4>
+              <p className="font-sans text-sm text-brown-muted leading-relaxed">
+                {item.body}
+              </p>
+            </div>
+          ))}
+        </div>
+      </TabsContent>
+    </Tabs>
+  );
+}

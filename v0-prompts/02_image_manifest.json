@@ -1,0 +1,295 @@
+{
+  "rupose_logo_svg": "https://rupose.nl/wp-content/uploads/2024/01/Logo-opzet-2.svg",
+  "lifestyle_images": [
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/08/MCD9646-Edit-groot.jpeg",
+      "alt": "Donzen Dekbed Vorsa",
+      "w": 1280,
+      "h": 853
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2024/02/pngimg.com-bed_PNG17418.png",
+      "alt": "",
+      "w": 722,
+      "h": 500
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2024/01/Achtergrond-van-shutterstock_1716820465-verwijderd-normaal.png",
+      "alt": "",
+      "w": 640,
+      "h": 415
+    }
+  ],
+  "big_other_candidates": [
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2026/03/Formesse_Bella-Donna-Jersey_Farbpalette-1-scaled.jpg",
+      "alt": "",
+      "w": 2560,
+      "h": 1783,
+      "slug": "formesse_bella-donna-jersey_farbpalette-1"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2026/02/Formesse_Bella-Donna-Jersey_Imagebild.jpg",
+      "alt": "",
+      "w": 2120,
+      "h": 1590,
+      "slug": "formesse_bella-donna-jersey_imagebild"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2026/02/Formesse_Bella-Donna-Jersey_Stapel-scaled.jpg",
+      "alt": "",
+      "w": 1707,
+      "h": 2560,
+      "slug": "formesse_bella-donna-jersey_stapel"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/04/MCD9695-groot.jpeg",
+      "alt": "",
+      "w": 1280,
+      "h": 853,
+      "slug": "_mcd9695-groot"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/07/MCD9628-groot.jpeg",
+      "alt": "",
+      "w": 1280,
+      "h": 853,
+      "slug": "_mcd9628-groot"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/08/MCD9710-groot.jpeg",
+      "alt": "",
+      "w": 1280,
+      "h": 853,
+      "slug": "_mcd9710-groot"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/08/MCD9691-groot.jpeg",
+      "alt": "",
+      "w": 1280,
+      "h": 853,
+      "slug": "_mcd9691-groot"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/08/MCD9716-groot.jpeg",
+      "alt": "",
+      "w": 1280,
+      "h": 853,
+      "slug": "_mcd9716-groot"
+    }
+  ],
+  "brand_logos": [
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2026/02/Ecolife-Logo.png",
+      "slug": "ecolife-logo",
+      "w": 337,
+      "h": 150,
+      "title": "Ecolife Logo"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2026/02/Formesse-Logo.png",
+      "slug": "formesse-logo",
+      "w": 322,
+      "h": 156,
+      "title": "Formesse Logo"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2026/02/Hefel-logo.png",
+      "slug": "hefel-logo",
+      "w": 308,
+      "h": 164,
+      "title": "Hefel logo"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2026/02/Homan-logo.jpeg",
+      "slug": "homan-logo-2",
+      "w": 180,
+      "h": 170,
+      "title": "Homan logo"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2026/02/Texeler-logo.png",
+      "slug": "texeler-logo",
+      "w": 214,
+      "h": 148,
+      "title": "Texeler logo"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/08/homan-logo.svg",
+      "slug": "homan-logo",
+      "w": 180,
+      "h": 52,
+      "title": "homan-logo"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/04/Rupose-logo-by-homan.svg",
+      "slug": "rupose-logo-by-homan",
+      "w": 560,
+      "h": 173,
+      "title": "Rupose logo &#8211; by homan"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/04/support_839961.svg",
+      "slug": "support_839961",
+      "w": 422,
+      "h": 422,
+      "title": "support_839961"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/04/customer-service_4899019.svg",
+      "slug": "customer-service_4899019",
+      "w": 512,
+      "h": 512,
+      "title": "customer-service_4899019"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/04/comment_1756625.svg",
+      "slug": "comment_1756625",
+      "w": 384,
+      "h": 384,
+      "title": "comment_1756625"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/06/Mahoton-natuurrubber-butterfly-twin-hoofdkussen-logo.jpg",
+      "slug": "mahoton-natuurrubber-butterfly-twin-hoofdkussen-logo-2",
+      "w": 2365,
+      "h": 1740,
+      "title": "Mahoton-natuurrubber-butterfly-twin-hoofdkussen-logo"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2025/04/user_13360577.svg",
+      "slug": "user_13360577",
+      "w": 100,
+      "h": 100,
+      "title": "user_13360577"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2024/09/Rupose-favicon.svg",
+      "slug": "rupose-favicon",
+      "w": 800,
+      "h": 800,
+      "title": "Rupose favicon"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2024/07/Mahoton-natuurrubber-butterfly-twin-hoofdkussen-logo.jpg",
+      "slug": "mahoton-natuurrubber-butterfly-twin-hoofdkussen-logo",
+      "w": 2365,
+      "h": 1740,
+      "title": "Mahoton-natuurrubber-butterfly-twin-hoofdkussen-logo"
+    },
+    {
+      "url": "https://rupose.nl/wp-content/uploads/2024/01/Logo-opzet-2.svg",
+      "slug": "logo-opzet-2",
+      "w": 560,
+      "h": 173,
+      "title": "Logo opzet 2"
+    }
+  ],
+  "product_images": {
+    "texeler-multikeus-dekbed-120gr": {
+      "primary": "https://rupose.nl/wp-content/uploads/2026/05/Texeler_Tencel120-single-tas-scaled.jpg",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2026/05/Texeler_Tencel120-single-tas-scaled.jpg",
+        "https://rupose.nl/wp-content/uploads/2026/05/Texeler-multikeus-P-scaled.jpg"
+      ],
+      "name": "Texeler Multikeus dekbed 120 gr/m2"
+    },
+    "": {
+      "primary": "https://rupose.nl/wp-content/uploads/2025/07/pure_cotton_ub.jpg",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2025/07/pure_cotton_ub.jpg"
+      ],
+      "name": "Hefel Pure Cotton Topdekmatras"
+    },
+    "donzen-dekbed-vorsa": {
+      "primary": "https://rupose.nl/wp-content/uploads/2026/03/MCD9646-Edit-groot-300x300-1.jpeg",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2026/03/MCD9646-Edit-groot-300x300-1.jpeg"
+      ],
+      "name": "Donzen Dekbed Vorsa"
+    },
+    "bella-donna-clima-kussensloop": {
+      "primary": "https://rupose.nl/wp-content/uploads/2025/06/csm_Formesse_Packshot_Bella_Donna_Clima_KissenSBZ_7a3ea91963.png.webp",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2025/06/csm_Formesse_Packshot_Bella_Donna_Clima_KissenSBZ_7a3ea91963.png.webp",
+        "https://rupose.nl/wp-content/uploads/2025/06/csm_Formesse_BD_Clima_natuerliche_hygiene_6bc434ccfb.jpg.webp"
+      ],
+      "name": "Bella Donna Clima Kussensloop"
+    },
+    "hoofdkussen-melody": {
+      "primary": "https://rupose.nl/wp-content/uploads/2025/06/Mahoton-natuurlatex-melody-hoofdkussen-logo.jpg",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2025/06/Mahoton-natuurlatex-melody-hoofdkussen-logo.jpg",
+        "https://rupose.nl/wp-content/uploads/2025/06/Mahoton-natuurlatex-melody-kussen-logo.jpg"
+      ],
+      "name": "Hoofdkussen Melody"
+    },
+    "hoofdkussen-vorsa-duo": {
+      "primary": "https://rupose.nl/wp-content/uploads/2026/02/MCD9628-scaled-e1771229537998.jpg",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2026/02/MCD9628-scaled-e1771229537998.jpg",
+        "https://rupose.nl/wp-content/uploads/2026/02/MCD9628-scaled-e1771229537998.jpg"
+      ],
+      "name": "Hoofdkussen Vorsa duo"
+    },
+    "hoofdkussen-butterfly": {
+      "primary": "https://rupose.nl/wp-content/uploads/2025/07/Mahoton-natuurrubber-butterfly-hoofdkussen-logo.jpg",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2025/07/Mahoton-natuurrubber-butterfly-hoofdkussen-logo.jpg"
+      ],
+      "name": "Hoofdkussen Butterfly"
+    },
+    "plateau-molton-tencel": {
+      "primary": "https://rupose.nl/wp-content/uploads/2025/08/plateau-molton-tencel.webp",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2025/08/plateau-molton-tencel.webp",
+        "https://rupose.nl/wp-content/uploads/2025/08/plateau-molton-tencel-4.webp",
+        "https://rupose.nl/wp-content/uploads/2025/08/plateau-molton-tencel-5.webp",
+        "https://rupose.nl/wp-content/uploads/2025/08/plateau-molton-tencel-6.webp",
+        "https://rupose.nl/wp-content/uploads/2025/08/plateau-molton-tencel-3.webp"
+      ],
+      "name": "Plateau Molton Tencel"
+    },
+    "bella-donna-clima": {
+      "primary": "https://rupose.nl/wp-content/uploads/2025/06/Bella-Donna-Clima-scaled.jpg",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2025/06/Bella-Donna-Clima-scaled.jpg",
+        "https://rupose.nl/wp-content/uploads/2025/06/Bella-Donna_Clima_Detail-1-scaled.jpg",
+        "https://rupose.nl/wp-content/uploads/2025/06/Bella-Donna-Clima_Detail-2-scaled.jpg"
+      ],
+      "name": "Bella Donna Clima"
+    },
+    "bella-donna-edel-molton": {
+      "primary": "https://rupose.nl/wp-content/uploads/2025/06/Bella-Donna-Edel-Molton_Kombi-1-scaled.jpg",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2025/06/Bella-Donna-Edel-Molton_Kombi-1-scaled.jpg",
+        "https://rupose.nl/wp-content/uploads/2025/06/Bella-Donna-Edel-Molton_Detail-1-scaled.jpg",
+        "https://rupose.nl/wp-content/uploads/2025/06/Bella-Donna-Edel-Molton_Detail-3-scaled.jpg"
+      ],
+      "name": "Bella Donna Edel-Molton"
+    },
+    "bella-donna-jersey-hoeslaken": {
+      "primary": "https://rupose.nl/wp-content/uploads/2024/06/Farbe-0030_bordeaux.jpg",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2024/06/Farbe-0030_bordeaux.jpg",
+        "https://rupose.nl/wp-content/uploads/2024/08/Bella-Donna-Jersey_Farbstapel.jpg",
+        "https://rupose.nl/wp-content/uploads/2024/08/Bella-Donna-Jersey_54-Farben_2024.jpg"
+      ],
+      "name": "Bella Donna Jersey hoeslaken"
+    },
+    "texeler-bovenste-beste-hoofdkussen": {
+      "primary": "https://rupose.nl/wp-content/uploads/2026/02/Texeler_SOEZZ_Bovenste_Beste-scaled.jpg",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2026/02/Texeler_SOEZZ_Bovenste_Beste-scaled.jpg"
+      ],
+      "name": "Texeler Bovenste Beste hoofdkussen"
+    },
+    "texeler-bovenste-beste-dekbed": {
+      "primary": "https://rupose.nl/wp-content/uploads/2026/02/Texeler_Bovenste-Beste-P-scaled.jpg",
+      "all": [
+        "https://rupose.nl/wp-content/uploads/2026/02/Texeler_Bovenste-Beste-P-scaled.jpg"
+      ],
+      "name": "Texeler Bovenste Beste dekbed."
+    }
+  }
+}

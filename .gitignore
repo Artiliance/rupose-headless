@@ -1,0 +1,23 @@
+# Klant-data en credentials
+_inventory/
+v0-prompts/00_context.json
+v0-prompts/01_home_FULL.md
+*.env
+*.env.local
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Node / Next.js (later bij echte project-build)
+node_modules/
+.next/
+out/
+dist/
+
+# Logs
+*.log
+
+# Temp
+/tmp/
