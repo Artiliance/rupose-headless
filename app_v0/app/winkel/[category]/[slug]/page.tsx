@@ -1,18 +1,21 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { PRODUCTS, getProductBySlug, getRelatedProducts } from "@/lib/products";
+import { products, getProductBySlug, getRelatedProducts } from "@/lib/products";
 import { Breadcrumbs } from "@/components/pdp/breadcrumbs";
-import { ProductGallery } from "@/components/pdp/product-gallery";
-import { ProductInfo } from "@/components/pdp/product-info";
+import { ProductLayoutClient } from "@/components/pdp/product-layout-client";
 import { ProductTabs } from "@/components/pdp/product-tabs";
 import { RelatedProducts } from "@/components/pdp/related-products";
+import { FaqAccordion } from "@/components/blocks/faq-accordion";
+import { CrossSell } from "@/components/blocks/cross-sell";
+import { RecentlyViewed } from "@/components/blocks/recently-viewed";
+import { getProductFaqs } from "@/lib/faqs";
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return PRODUCTS.map((product) => ({
+  return products.map((product) => ({
     category: product.categorySlug,
     slug: product.slug,
   }));
@@ -24,18 +27,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (!product) {
     return {
-      title: "Product niet gevonden — Rupose",
+      title: "Product niet gevonden | Rupose",
     };
   }
 
   return {
-    title: `${product.name} — Rupose`,
-    description: product.shortDescription,
+    title: `${product.name} | Rupose`,
+    description: product.shortDesc,
     openGraph: {
-      title: `${product.name} — Rupose`,
-      description: product.shortDescription,
-      images: product.images[0]
-        ? [{ url: product.images[0].src, alt: product.images[0].alt }]
+      title: `${product.name} | Rupose`,
+      description: product.shortDesc,
+      images: product.gallery[0]
+        ? [{ url: product.gallery[0], alt: product.name }]
         : [],
     },
   };
@@ -51,9 +54,15 @@ export default async function ProductPage({ params }: PageProps) {
 
   const related = getRelatedProducts(product, 4);
 
+  // Convert gallery strings to image objects for ProductGallery
+  const galleryImages = product.gallery.map((src, i) => ({
+    src,
+    alt: i === 0 ? product.name : `${product.name} - afbeelding ${i + 1}`,
+  }));
+
   const breadcrumbs = [
     { label: "Winkel", href: "/winkel/" },
-    { label: product.category, href: product.categoryHref },
+    { label: product.categoryLabel, href: `/winkel/${product.categorySlug}/` },
     { label: product.name },
   ];
 
@@ -71,18 +80,7 @@ export default async function ProductPage({ params }: PageProps) {
         aria-label={product.name}
         className="container mx-auto px-4 md:px-6 py-10 md:py-16"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-start">
-          {/* Left — Gallery */}
-          <div className="lg:sticky lg:top-28">
-            <ProductGallery
-              images={product.images}
-              productName={product.name}
-            />
-          </div>
-
-          {/* Right — Info */}
-          <ProductInfo product={product} />
-        </div>
+        <ProductLayoutClient product={product} galleryImages={galleryImages} />
       </section>
 
       {/* ── Divider ── */}
@@ -96,8 +94,25 @@ export default async function ProductPage({ params }: PageProps) {
         <ProductTabs product={product} />
       </section>
 
+      {/* ── FAQ ── */}
+      <FaqAccordion
+        eyebrow="Veelgestelde vragen"
+        title={`Vragen over ${product.name}`}
+        items={getProductFaqs(slug)}
+        bg="muted"
+      />
+
+      {/* ── Cross-sell ── */}
+      <CrossSell
+        variant="also-bought"
+        products={related.slice(0, 4)}
+      />
+
       {/* ── Related products ── */}
       <RelatedProducts products={related} />
+
+      {/* ── Recently viewed ── */}
+      <RecentlyViewed products={products.slice(0, 6)} />
     </main>
   );
 }

@@ -19,6 +19,15 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomPos, setZoomPos] = useState({ x: 50, y: 50 });
 
+  // Guard against empty images array
+  if (!images || images.length === 0) {
+    return (
+      <div className="aspect-square bg-muted rounded-sm flex items-center justify-center">
+        <span className="text-muted-foreground text-sm">Geen afbeelding beschikbaar</span>
+      </div>
+    );
+  }
+
   const activeImage = images[activeIndex] ?? images[0];
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {

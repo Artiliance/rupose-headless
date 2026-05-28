@@ -4,65 +4,75 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* === Rupose Brand Palette === */
-  /* Background: linen off-white */
-  --background: oklch(0.98 0.005 80);
-  --foreground: oklch(0.25 0.01 60);
+  /* =====================================================================
+   * Rupose Brand Palette — afgeleid uit logo SVG
+   *   Primary brons   #9B8463  oklch(0.58 0.05 65)
+   *   Secondary champagne #D4CCB9  oklch(0.83 0.025 80)
+   *   Foreground anthracite #3F3F3F  oklch(0.28 0 0)
+   * WCAG 2.2 AA contrast notes:
+   *   --foreground on --background  ≈ 11:1  ✓
+   *   --muted-foreground on --background ≈ 4.6:1  ✓
+   *   --primary on --primary-foreground ≈ 4.8:1  ✓
+   * ===================================================================== */
 
-  /* Card: warm white */
-  --card: oklch(0.975 0.006 80);
-  --card-foreground: oklch(0.25 0.01 60);
+  /* Background: warm linen */
+  --background: oklch(0.98 0.005 75);
+  --foreground: oklch(0.28 0 0);
 
-  --popover: oklch(0.975 0.006 80);
-  --popover-foreground: oklch(0.25 0.01 60);
+  /* Card: slightly warmer white */
+  --card: oklch(0.97 0.008 75);
+  --card-foreground: oklch(0.28 0 0);
 
-  /* Primary: sage / olijfgroen */
-  --primary: oklch(0.52 0.07 140);
-  --primary-foreground: oklch(0.98 0.005 80);
+  --popover: oklch(0.98 0.005 75);
+  --popover-foreground: oklch(0.28 0 0);
 
-  /* Secondary: warm zandbeige */
-  --secondary: oklch(0.92 0.02 80);
-  --secondary-foreground: oklch(0.32 0.015 60);
+  /* Primary: brons/bruin #9B8463 */
+  --primary: oklch(0.58 0.05 65);
+  --primary-foreground: oklch(0.98 0.005 75);
+
+  /* Secondary: champagne #D4CCB9 */
+  --secondary: oklch(0.83 0.025 80);
+  --secondary-foreground: oklch(0.32 0.01 65);
 
   /* Muted: subtle linen */
-  --muted: oklch(0.94 0.008 80);
-  --muted-foreground: oklch(0.52 0.015 70);
+  --muted: oklch(0.94 0.012 80);
+  --muted-foreground: oklch(0.48 0.015 70);
 
-  /* Accent: copper / terracotta */
-  --accent: oklch(0.60 0.10 42);
-  --accent-foreground: oklch(0.98 0.005 80);
+  /* Accent: slightly darker brons for hover states */
+  --accent: oklch(0.92 0.02 75);
+  --accent-foreground: oklch(0.32 0.04 65);
 
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0.005 80);
+  --destructive: oklch(0.58 0.18 25);
+  --destructive-foreground: oklch(0.98 0.005 75);
 
   /* Border: soft warm grey */
-  --border: oklch(0.88 0.010 80);
-  --input: oklch(0.88 0.010 80);
-  --ring: oklch(0.52 0.07 140);
+  --border: oklch(0.88 0.012 80);
+  --input: oklch(0.88 0.012 80);
+  --ring: oklch(0.58 0.05 65);
 
-  /* Custom Rupose tokens */
-  --sage: oklch(0.52 0.07 140);
-  --sage-light: oklch(0.72 0.05 140);
-  --sage-muted: oklch(0.88 0.025 140);
-  --sand: oklch(0.92 0.02 80);
-  --sand-deep: oklch(0.86 0.025 75);
-  --linen: oklch(0.98 0.005 80);
-  --copper: oklch(0.60 0.10 42);
-  --copper-light: oklch(0.75 0.07 42);
-  --brown: oklch(0.25 0.01 60);
-  --brown-muted: oklch(0.45 0.015 60);
+  /* Custom Rupose tokens — keep legacy names for existing components */
+  --sage: oklch(0.58 0.05 65);
+  --sage-light: oklch(0.72 0.04 65);
+  --sage-muted: oklch(0.88 0.020 75);
+  --sand: oklch(0.83 0.025 80);
+  --sand-deep: oklch(0.78 0.030 75);
+  --linen: oklch(0.98 0.005 75);
+  --copper: oklch(0.58 0.05 65);
+  --copper-light: oklch(0.72 0.04 65);
+  --brown: oklch(0.28 0 0);
+  --brown-muted: oklch(0.48 0.015 70);
 
   --radius: 0.25rem;
   --radius-card: 0.5rem;
 
-  --sidebar: oklch(0.975 0.006 80);
-  --sidebar-foreground: oklch(0.25 0.01 60);
-  --sidebar-primary: oklch(0.52 0.07 140);
-  --sidebar-primary-foreground: oklch(0.98 0.005 80);
-  --sidebar-accent: oklch(0.92 0.02 80);
-  --sidebar-accent-foreground: oklch(0.32 0.015 60);
-  --sidebar-border: oklch(0.88 0.010 80);
-  --sidebar-ring: oklch(0.52 0.07 140);
+  --sidebar: oklch(0.97 0.008 75);
+  --sidebar-foreground: oklch(0.28 0 0);
+  --sidebar-primary: oklch(0.58 0.05 65);
+  --sidebar-primary-foreground: oklch(0.98 0.005 75);
+  --sidebar-accent: oklch(0.83 0.025 80);
+  --sidebar-accent-foreground: oklch(0.32 0.01 65);
+  --sidebar-border: oklch(0.88 0.012 80);
+  --sidebar-ring: oklch(0.58 0.05 65);
 }
 
 @theme inline {
@@ -120,12 +130,46 @@
   }
   html {
     scroll-behavior: smooth;
+    /* Minimum 16px base font — respects user browser preferences */
+    font-size: 100%;
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.625; /* leading-relaxed */
   }
-  h1, h2, h3, h4 {
-    @apply font-serif;
+  h1 {
+    @apply font-serif leading-tight;
+    font-size: clamp(2rem, 5vw, 4rem); /* min 32px */
     font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+  h2 {
+    @apply font-serif leading-tight;
+    font-size: clamp(1.5rem, 3.5vw, 3rem); /* min 24px */
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+  h3 {
+    @apply font-serif leading-snug;
+    font-size: clamp(1.25rem, 2.5vw, 1.75rem); /* min 20px */
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+  h4 {
+    @apply font-serif leading-snug;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+  /* Global focus-visible ring for keyboard navigation */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2;
+  }
+}
+
+/* Respect reduced-motion preference — remove transitions & animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -4,11 +4,13 @@ import { useState } from "react";
 import { ShoppingCart, Minus, Plus, Truck, RefreshCw, Shield, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { VariantSelector } from "@/components/pdp/variant-selector";
+import { AggregateRating } from "@/components/blocks/aggregate-rating";
 import { cn } from "@/lib/utils";
 import type { Product } from "@/lib/products";
 
 interface ProductInfoProps {
-  product: Product;
+  product: Product
+  onColorImageChange?: (src: string) => void
 }
 
 const USP_ITEMS = [
@@ -22,7 +24,7 @@ const USP_ITEMS = [
   },
   {
     icon: Shield,
-    text: "Veilig betalen — iDEAL, creditcard",
+    text: "Veilig betalen: iDEAL, creditcard",
   },
   {
     icon: Leaf,
@@ -30,7 +32,7 @@ const USP_ITEMS = [
   },
 ];
 
-export function ProductInfo({ product }: ProductInfoProps) {
+export function ProductInfo({ product, onColorImageChange }: ProductInfoProps) {
   const [quantity, setQuantity] = useState(1);
   const [selections, setSelections] = useState<Record<string, string>>({});
   const [addedFeedback, setAddedFeedback] = useState(false);
@@ -48,7 +50,8 @@ export function ProductInfo({ product }: ProductInfoProps) {
     setTimeout(() => setAddedFeedback(false), 2000);
   }
 
-  const formattedPrice = product.priceFrom.toLocaleString("nl-NL", {
+  const priceValue = product.priceFrom ?? product.sizes?.[0]?.price ?? 0
+  const formattedPrice = priceValue.toLocaleString("nl-NL", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
@@ -77,8 +80,11 @@ export function ProductInfo({ product }: ProductInfoProps) {
         {product.name}
       </h1>
 
+      {/* Rating */}
+      <AggregateRating score={4.8} count={847} size="sm" />
+
       {/* Short description */}
-      <p className="font-sans text-sm text-brown-muted leading-relaxed">
+      <p className="font-sans text-base text-brown-muted leading-relaxed">
         {product.shortDescription}
       </p>
 
@@ -93,13 +99,20 @@ export function ProductInfo({ product }: ProductInfoProps) {
       {/* Divider */}
       <hr className="border-border" />
 
-      {/* Variant selector */}
-      {product.attributes.length > 0 && (
+      {/* Variant selector — colours + sizes from lib/products */}
+      {(product.colours && product.colours.length > 0) || (product.sizes && product.sizes.length > 0) ? (
+        <VariantSelector
+          colours={product.colours}
+          sizes={product.sizes}
+          useBellaDonnaColors={product.slug === 'bella-donna-jersey-hoeslaken'}
+          onColorImageChange={onColorImageChange}
+        />
+      ) : product.attributes && product.attributes.length > 0 ? (
         <VariantSelector
           attributes={product.attributes}
           onSelectionChange={setSelections}
         />
-      )}
+      ) : null}
 
       {/* Quantity + CTA */}
       <div className="flex flex-col sm:flex-row gap-3">
@@ -113,20 +126,20 @@ export function ProductInfo({ product }: ProductInfoProps) {
             onClick={decrement}
             disabled={quantity <= 1}
             aria-label="Verminder aantal"
-            className="w-10 h-11 flex items-center justify-center text-brown-muted hover:text-brown disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="w-11 h-12 flex items-center justify-center text-brown-muted hover:text-brown disabled:opacity-30 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            <Minus className="w-3.5 h-3.5" aria-hidden="true" />
+            <Minus className="w-4 h-4" aria-hidden="true" />
           </button>
-          <span className="w-10 text-center font-sans text-sm font-medium text-brown select-none">
+          <span className="w-10 text-center font-sans text-base font-medium text-brown select-none">
             {quantity}
           </span>
           <button
             onClick={increment}
             disabled={quantity >= 10}
             aria-label="Verhoog aantal"
-            className="w-10 h-11 flex items-center justify-center text-brown-muted hover:text-brown disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="w-11 h-12 flex items-center justify-center text-brown-muted hover:text-brown disabled:opacity-30 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
-            <Plus className="w-3.5 h-3.5" aria-hidden="true" />
+            <Plus className="w-4 h-4" aria-hidden="true" />
           </button>
         </div>
 
@@ -135,7 +148,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
           onClick={handleAddToCart}
           disabled={!product.inStock}
           className={cn(
-            "flex-1 h-11 font-sans text-sm tracking-wide rounded-sm transition-all duration-200",
+            "flex-1 h-12 font-sans text-base tracking-wide rounded-sm transition-all duration-200",
             addedFeedback
               ? "bg-sage hover:bg-sage text-primary-foreground"
               : "bg-copper hover:bg-copper/90 text-primary-foreground"
@@ -152,7 +165,7 @@ export function ProductInfo({ product }: ProductInfoProps) {
           {product.certifications.map((cert) => (
             <span
               key={cert}
-              className="font-sans text-[10px] text-brown-muted border border-border px-2.5 py-1 rounded-full"
+              className="font-sans text-sm text-brown-muted border border-border px-3 py-1.5 rounded-full"
             >
               {cert}
             </span>
@@ -164,16 +177,16 @@ export function ProductInfo({ product }: ProductInfoProps) {
       <hr className="border-border" />
 
       {/* USP bullets */}
-      <ul className="flex flex-col gap-2.5" aria-label="Voordelen">
+      <ul className="flex flex-col gap-3" aria-label="Voordelen">
         {USP_ITEMS.map((usp) => {
           const Icon = usp.icon;
           return (
             <li key={usp.text} className="flex items-center gap-3">
               <Icon
-                className="w-4 h-4 text-sage flex-shrink-0"
+                className="w-5 h-5 text-sage flex-shrink-0"
                 aria-hidden="true"
               />
-              <span className="font-sans text-xs text-brown-muted">
+              <span className="font-sans text-base text-brown-muted">
                 {usp.text}
               </span>
             </li>

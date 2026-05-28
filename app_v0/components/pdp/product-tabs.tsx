@@ -20,7 +20,7 @@ export function ProductTabs({ product }: ProductTabsProps) {
           <TabsTrigger
             key={tab.value}
             value={tab.value}
-            className="font-sans text-sm text-brown-muted data-[state=active]:text-brown data-[state=active]:border-b-2 data-[state=active]:border-sage data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent hover:text-brown transition-colors"
+            className="font-sans text-base text-brown-muted data-[state=active]:text-brown data-[state=active]:border-b-2 data-[state=active]:border-sage data-[state=active]:shadow-none rounded-none px-5 py-3 min-h-[44px] bg-transparent hover:text-brown transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             {tab.label}
           </TabsTrigger>
@@ -30,10 +30,10 @@ export function ProductTabs({ product }: ProductTabsProps) {
       {/* Productinfo tab */}
       <TabsContent value="productinfo" className="mt-0">
         <div
-          className="prose prose-sm max-w-none font-sans text-brown-muted leading-relaxed
-            [&_h3]:font-serif [&_h3]:text-xl [&_h3]:font-light [&_h3]:text-brown [&_h3]:mt-6 [&_h3]:mb-3
-            [&_p]:mb-4
-            [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-4 [&_ul>li]:mb-1.5
+          className="prose prose-base max-w-none font-sans text-brown-muted leading-relaxed
+            [&_h3]:font-serif [&_h3]:text-2xl [&_h3]:font-light [&_h3]:text-brown [&_h3]:mt-6 [&_h3]:mb-3
+            [&_p]:mb-4 [&_p]:text-base
+            [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-4 [&_ul>li]:mb-2 [&_ul>li]:text-base
             [&_strong]:text-brown [&_strong]:font-medium"
           dangerouslySetInnerHTML={{ __html: product.longDescriptionHtml }}
         />
@@ -42,15 +42,15 @@ export function ProductTabs({ product }: ProductTabsProps) {
       {/* Specificaties tab */}
       <TabsContent value="specificaties" className="mt-0">
         <dl className="divide-y divide-border">
-          {product.specifications.map((spec) => (
+          {(product.specifications ?? []).map((spec) => (
             <div
               key={spec.label}
-              className="flex flex-col sm:flex-row sm:gap-8 py-3.5"
+              className="flex flex-col sm:flex-row sm:gap-8 py-4"
             >
-              <dt className="font-sans text-xs font-medium text-brown uppercase tracking-wider w-full sm:w-48 flex-shrink-0 mb-1 sm:mb-0">
+              <dt className="font-sans text-base font-medium text-brown uppercase tracking-wider w-full sm:w-52 flex-shrink-0 mb-1 sm:mb-0">
                 {spec.label}
               </dt>
-              <dd className="font-sans text-sm text-brown-muted flex-1">
+              <dd className="font-sans text-base text-brown-muted flex-1">
                 {spec.value}
               </dd>
             </div>
@@ -61,7 +61,7 @@ export function ProductTabs({ product }: ProductTabsProps) {
       {/* Onderhoud tab */}
       <TabsContent value="onderhoud" className="mt-0">
         <div className="flex flex-col gap-5 max-w-2xl">
-          <p className="font-sans text-sm text-brown-muted leading-relaxed">
+          <p className="font-sans text-base text-brown-muted leading-relaxed">
             Goed onderhoud verlengt de levensduur van uw beddengoed aanzienlijk
             en behoudt de kwaliteit en comfort van uw investering.
           </p>
@@ -77,21 +77,21 @@ export function ProductTabs({ product }: ProductTabsProps) {
               },
               {
                 title: "Opslaan",
-                body: "Bewaar schoon en droog beddengoed in een ademende katoenen zak of het originele verpakking. Vermijd plastic zakken — die houden vocht vast.",
+                body: "Bewaar schoon en droog beddengoed in een ademende katoenen zak of het originele verpakking. Vermijd plastic zakken, want die houden vocht vast.",
               },
               {
                 title: "Luchten",
-                body: "Laat uw dekbed en kussens regelmatig luchten — het liefst in de buitenlucht op een droge dag. Dit vermindert stofmijten en frist de vulling op.",
+                body: "Laat uw dekbed en kussens regelmatig luchten, het liefst in de buitenlucht op een droge dag. Dit vermindert stofmijten en frist de vulling op.",
               },
             ].map((item) => (
               <div
                 key={item.title}
-                className="bg-sand/50 rounded-sm p-4 border border-border"
+                className="bg-sand/50 rounded-sm p-5 border border-border"
               >
-                <h4 className="font-serif text-base font-medium text-brown mb-2">
+                <h4 className="font-serif text-xl font-medium text-brown mb-2">
                   {item.title}
                 </h4>
-                <p className="font-sans text-xs text-brown-muted leading-relaxed">
+                <p className="font-sans text-base text-brown-muted leading-relaxed">
                   {item.body}
                 </p>
               </div>
@@ -121,11 +121,11 @@ export function ProductTabs({ product }: ProductTabsProps) {
               body: "Stuur een e-mail naar info@rupose.nl met uw bestelnummer en de reden van retour. Wij sturen u de retourinstructies toe. Retourkosten zijn voor de klant, tenzij sprake is van een defect product.",
             },
           ].map((item) => (
-            <div key={item.title} className="flex flex-col gap-1.5">
-              <h4 className="font-serif text-base font-medium text-brown">
+            <div key={item.title} className="flex flex-col gap-2">
+              <h4 className="font-serif text-xl font-medium text-brown">
                 {item.title}
               </h4>
-              <p className="font-sans text-sm text-brown-muted leading-relaxed">
+              <p className="font-sans text-base text-brown-muted leading-relaxed">
                 {item.body}
               </p>
             </div>

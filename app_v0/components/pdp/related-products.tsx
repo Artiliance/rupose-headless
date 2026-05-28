@@ -16,7 +16,7 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
         {/* Header */}
         <div className="flex items-end justify-between mb-10">
           <div>
-            <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-copper mb-2">
+            <p className="font-sans text-sm uppercase tracking-[0.18em] text-copper mb-2">
               Vergelijkbaar
             </p>
             <h2
@@ -28,11 +28,11 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
           </div>
           <Link
             href="/winkel/"
-            className="hidden sm:inline-flex items-center gap-1.5 font-sans text-xs text-brown-muted hover:text-brown transition-colors group"
+            className="hidden sm:inline-flex items-center gap-1.5 font-sans text-base text-brown-muted hover:text-brown transition-colors group min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             Alle producten
             <ArrowRight
-              className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5"
+              className="w-4 h-4 transition-transform group-hover:translate-x-0.5"
               aria-hidden="true"
             />
           </Link>
@@ -45,8 +45,8 @@ export function RelatedProducts({ products }: RelatedProductsProps) {
               key={product.slug}
               name={product.name}
               slug={product.slug}
-              price={String(product.priceFrom)}
-              image={product.images[0]?.src ?? null}
+              price={String(product.priceFrom ?? '')}
+              image={product.images?.[0]?.src ?? null}
               shortDesc={product.shortDescription}
               category={product.categorySlug}
             />

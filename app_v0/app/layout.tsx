@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Script from 'next/script'
-import { SiteHeader } from '@/components/site-header'
-import { SiteFooter } from '@/components/site-footer'
+import { Toaster } from 'sonner'
+import { SiteHeader } from '@/components/site/site-header'
+import { SiteFooter } from '@/components/site/site-footer'
+import { FloatingContact } from '@/components/blocks/floating-contact'
+import { BackToTop } from '@/components/blocks/back-to-top'
+import { ExitIntentPopup } from '@/components/blocks/exit-intent-popup'
 import './globals.css'
 
 const inter = Inter({
@@ -12,7 +16,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Rupose — Premium Bedtextiel | Shop Slim, Droom Zacht',
+  title: 'Rupose | Premium Bedtextiel. Shop Slim, Droom Zacht.',
   description:
     'Rupose is dé premium specialist in slaapcomfort. Hochwaardige dekbedden, hoofdkussens, hoeslakens en topmatrassen van merken als Bella Donna, Texeler, Hefel en Dommelin.',
   keywords:
@@ -20,7 +24,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Rupose', url: 'https://rupose.nl' }],
   metadataBase: new URL('https://rupose.nl'),
   openGraph: {
-    title: 'Rupose — Premium Bedtextiel',
+    title: 'Rupose | Premium Bedtextiel',
     description: 'Premium slaapcomfort-specialist. Shop slim, droom zacht.',
     url: 'https://rupose.nl',
     siteName: 'Rupose',
@@ -53,6 +57,24 @@ export default function RootLayout({
         <SiteHeader />
         {children}
         <SiteFooter />
+
+        {/* Floating stack: bottom-right, gap-2 */}
+        <div className="fixed bottom-6 right-4 z-50 flex flex-col items-center gap-2">
+          <BackToTop />
+          <FloatingContact />
+        </div>
+
+        <ExitIntentPopup />
+
+        <Toaster
+          richColors
+          closeButton
+          toastOptions={{
+            classNames: {
+              toast: 'font-sans',
+            },
+          }}
+        />
         <Script
           src="https://cdn.cookie-script.com/s/4a6bbfdd9b7a8382bd90ec40800b553d.js"
           strategy="afterInteractive"

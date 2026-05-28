@@ -41,11 +41,11 @@ export function AdviceCard({
 
       {/* Meta */}
       <div className="flex items-center gap-3 mb-3">
-        <span className="font-sans text-[10px] uppercase tracking-widest text-copper font-medium">
+        <span className="font-sans text-sm uppercase tracking-widest text-copper font-medium">
           {tag}
         </span>
         <span className="w-px h-3 bg-border" aria-hidden="true" />
-        <span className="font-sans text-[10px] text-brown-muted">{readTime}</span>
+        <span className="font-sans text-sm text-brown-muted">{readTime}</span>
       </div>
 
       {/* Title */}
@@ -56,17 +56,17 @@ export function AdviceCard({
       </Link>
 
       {/* Excerpt */}
-      <p className="font-sans text-sm text-brown-muted leading-relaxed mb-4 flex-1 line-clamp-3">
+      <p className="font-sans text-base text-brown-muted leading-relaxed mb-4 flex-1 line-clamp-3">
         {excerpt}
       </p>
 
       {/* CTA */}
       <Link
         href={href}
-        className="inline-flex items-center gap-2 font-sans text-sm text-brown-muted hover:text-brown transition-colors group/link self-start pb-0.5 border-b border-border hover:border-brown"
+        className="inline-flex items-center gap-2 font-sans text-base text-brown-muted hover:text-brown transition-colors group/link self-start min-h-[44px] pb-0.5 border-b border-border hover:border-brown focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       >
         Lees meer
-        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5" />
+        <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5" aria-hidden="true" />
       </Link>
     </article>
   );
