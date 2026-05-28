@@ -89,7 +89,7 @@ export function CategoryGrid({
           </motion.div>
           {showViewAll && (
             <Link
-              href="/winkel/"
+              href="/winkel/alle/"
               className="inline-flex items-center gap-2 font-sans text-base text-muted-foreground hover:text-foreground transition-colors group min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Alles bekijken

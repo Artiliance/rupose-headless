@@ -141,7 +141,7 @@ export function CheckoutForm() {
                         value={method.id}
                         checked={payment === method.id}
                         onChange={() => setPayment(method.id)}
-                        className="accent-primary w-4 h-4 focus-visible:ring-2 focus-visible:ring-ring"
+                        className="accent-primary w-4 h-4 shrink-0 focus-visible:ring-2 focus-visible:ring-ring"
                       />
                       <Icon className="w-5 h-5 text-muted-foreground" aria-hidden="true" />
                       <span className="font-sans text-base text-foreground">{method.label}</span>

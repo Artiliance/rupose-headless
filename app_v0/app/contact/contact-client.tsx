@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { FaqAccordion } from '@/components/blocks/faq-accordion'
 import { CtaBanner } from '@/components/blocks/cta-banner'
+import { Hero } from '@/components/blocks/hero'
 import { toastSuccess } from '@/lib/toast'
 
 const contactFaqs = [
@@ -46,32 +47,13 @@ export function ContactPageClient() {
   }
 
   return (
-    <main className="pt-28 md:pt-32">
-      {/* Breadcrumb */}
-      <div className="bg-secondary/30 border-b border-border">
-        <div className="container mx-auto px-4 md:px-6 py-3">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-1 text-sm text-muted-foreground">
-            <Link href="/" className="hover:text-foreground transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="w-4 h-4" aria-hidden="true" />
-            <span className="text-foreground font-medium">Contact</span>
-          </nav>
-        </div>
-      </div>
-
-      {/* Header */}
-      <header className="bg-secondary/20 py-12 md:py-16">
-        <div className="container mx-auto px-4 md:px-6 text-center">
-          <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-4">
-            Contact
-          </h1>
-          <p className="font-sans text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-            Heb je vragen over onze producten, je bestelling of wil je persoonlijk
-            slaapadvies? We helpen je graag.
-          </p>
-        </div>
-      </header>
+    <main>
+      <Hero
+        variant="simple"
+        eyebrow="Klantenservice"
+        title="Contact"
+        intro="Heb je vragen over onze producten, je bestelling of wil je persoonlijk slaapadvies? We helpen je graag."
+      />
 
       {/* Contact Form + Info */}
       <section className="py-16 md:py-20 bg-background">
@@ -214,11 +196,15 @@ export function ContactPageClient() {
                 </div>
               </div>
 
-              {/* Map placeholder */}
-              <div className="bg-secondary/30 border border-border rounded-sm aspect-[4/3] flex items-center justify-center">
-                <p className="text-muted-foreground text-sm">
-                  Kaart: Rijksstraatweg 167, Haren
-                </p>
+              {/* Google Maps */}
+              <div className="border border-border rounded-sm aspect-[4/3] overflow-hidden">
+                <iframe
+                  title="Rupose — Rijksstraatweg 167, Haren"
+                  src="https://www.google.com/maps?q=Rijksstraatweg+167,+9752+BE+Haren&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full border-0"
+                />
               </div>
             </div>
           </div>
