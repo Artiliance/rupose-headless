@@ -86,7 +86,7 @@ export function NewsletterCta({
             <p className="font-sans text-xs text-muted-foreground/60 mt-4">
               Door je aan te melden ga je akkoord met ons{' '}
               <a
-                href="/privacy-policy/"
+                href="/privacyverklaring/"
                 className="underline hover:text-muted-foreground transition-colors"
               >
                 privacybeleid

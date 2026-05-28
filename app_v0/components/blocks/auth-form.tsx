@@ -94,7 +94,7 @@ export function AuthForm({ variant }: AuthFormProps) {
                   </Label>
                   {isLogin && (
                     <Link
-                      href="/account/wachtwoord-vergeten/"
+                      href="/contact/"
                       className="font-sans text-sm text-primary hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded"
                     >
                       Wachtwoord vergeten?

@@ -51,10 +51,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ProductPage({ params }: PageProps) {
-  const { slug } = await params;
+  const { category, slug } = await params;
   const product = getProductBySlug(slug);
 
-  if (!product) {
+  if (!product || product.categorySlug !== category) {
     notFound();
   }
 

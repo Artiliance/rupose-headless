@@ -246,21 +246,21 @@ export const brandFaqs: Record<string, FaqItem[]> = {
         'Bij correcte verzorging heeft een Hefel premium dekbed een levensduur van 10 tot 15 jaar. Laat het jaarlijks professioneel reinigen, laat het regelmatig luchten en bewaar het los in een katoenen hoes wanneer het niet in gebruik is.',
     },
   ],
-  dommelin: [
+  ecolife: [
     {
-      question: 'Wat onderscheidt Dommelin van andere beddentextielmerken?',
+      question: 'Wat onderscheidt Ecolife van andere beddengoedmerken?',
       answer:
-        'Dommelin bestaat al meer dan 100 jaar en staat synoniem voor degelijk Nederlands beddengoed. De producten zijn vervaardigd van fijngeweven percal en satijn katoen met een hoge draaddichtheid, wat zorgt voor een luxe gevoel en lange levensduur.',
+        'Ecolife maakt slaapproducten uitsluitend van gecertificeerde natuurlijke en gerecyclede materialen, zoals GOTS-biologische wol en gerecyclede PET-vezels. Het merk combineert volwaardig slaapcomfort met een aantoonbaar lagere milieubelasting.',
     },
     {
-      question: 'In welke materialen zijn Dommelin producten verkrijgbaar?',
+      question: 'Welke materialen gebruikt Ecolife?',
       answer:
-        'Dommelin biedt producten aan in percal katoen, satijn, flanel en TENCEL Lyocell. Elk materiaal heeft een unieke eigenschapscombinatie van ademend vermogen, zachtheid en onderhoudsvriendelijkheid. Onze medewerkers helpen je graag de juiste keuze maken.',
+        'Ecolife werkt met gerecyclede of gecertificeerde biologische grondstoffen. De vullingen bestaan uit GOTS-wol of gerecyclede PET-vezels die dezelfde veerkracht bieden als synthetisch, maar met een fractie van de milieu-impact. Onze medewerkers helpen je graag de juiste keuze maken.',
     },
     {
-      question: 'Zijn Dommelin dekbedovertrekken moeilijk te onderhouden?',
+      question: 'Hoe weet ik waar mijn Ecolife-product vandaan komt?',
       answer:
-        'Nee. De meeste Dommelin producten zijn wasbaar op 60 graden en worden zachter na verloop van was-beurten. Het is aan te raden niet te tumble-drogen op hoge temperatuur om de stof te beschermen.',
+        'Elk Ecolife-product bevat een kaartje met de exacte herkomst van de gebruikte materialen en de bijbehorende certificeringen. Zo weet je precies waarvoor je betaalt en hoe duurzaam je aankoop is.',
     },
   ],
   vorsa: [
@@ -335,11 +335,11 @@ const slugSpecificFaqs: Record<string, FaqItem[]> = {
         'Het Hefel Pure Cotton dekbed in warmteklasse 2 is ideaal voor warme slapers of gebruik in de zomer. De katoenen tijk ademt uitstekend en de lichte donsvulling reguleert de temperatuur zonder warmtestuwing.',
     },
   ],
-  'dommelin-dekbedovertrek': [
+  'plateau-molton-tencel': [
     {
-      question: 'Wordt het Dommelin dekbedovertrek zachter na wassen?',
+      question: 'Wordt de Plateau Molton Tencel zachter na wassen?',
       answer:
-        'Ja. Percal katoen wordt doorgaans zachter na meerdere wasbeurten. Was op 60 graden en droog op een lage temperatuur of hang het buiten. Na 3 tot 5 wasbeurten bereikt percal zijn optimale zachtheid en glans.',
+        'Ja. De TENCEL-katoen molton wordt doorgaans zachter na meerdere wasbeurten. Was op 60 graden en droog op een lage temperatuur of hang hem buiten. Na enkele wasbeurten bereikt de stof zijn optimale zachtheid.',
     },
   ],
   'vorsa-donzen-dekbed': [

@@ -49,9 +49,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'Rupose | Premium Bedtextiel. Shop Slim, Droom Zacht.',
   description:
-    'Rupose is dé premium specialist in slaapcomfort. Hochwaardige dekbedden, hoofdkussens, hoeslakens en topmatrassen van merken als Bella Donna, Texeler, Hefel en Dommelin.',
+    'Rupose is dé premium specialist in slaapcomfort. Hoogwaardige dekbedden, hoofdkussens, hoeslakens en topmatrassen van merken als Bella Donna, Texeler, Hefel en Ecolife.',
   keywords:
-    'bedtextiel, hoeslakens, hoofdkussens, dekbedden, topmatrassen, molton, Bella Donna, Texeler, Hefel, Dommelin, premium slaap',
+    'bedtextiel, hoeslakens, hoofdkussens, dekbedden, topmatrassen, molton, Bella Donna, Texeler, Hefel, Ecolife, premium slaap',
   authors: [{ name: 'Rupose', url: 'https://rupose.nl' }],
   metadataBase: new URL('https://rupose.nl'),
   openGraph: {

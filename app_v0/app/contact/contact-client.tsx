@@ -145,7 +145,7 @@ export function ContactPageClient() {
                       <p className="text-muted-foreground">
                         Rijksstraatweg 167
                         <br />
-                        9752 BH Haren
+                        9752 BE Haren
                       </p>
                     </div>
                   </div>

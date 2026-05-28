@@ -306,7 +306,7 @@ Tencel is een merknaam voor Lyocell-vezels, gewonnen uit hout van duurzaam behee
 
 De meest duurzame aankoop is een die je jarenlang niet hoeft te vervangen. Een goedkoop hoeslaken dat na een jaar versleten is, heeft een hogere milieu-impact dan een duurder kwalitatief exemplaar dat 10 jaar meegaat. Investeer in kwaliteit.
 
-Bij Rupose verkopen we uitsluitend beddengoed van merken die serieus omgaan met kwaliteit en duurzaamheid: Bella Donna, Dommelin, Texeler en Hefel werken allemaal met gecertificeerde materialen.`,
+Bij Rupose verkopen we uitsluitend beddengoed van merken die serieus omgaan met kwaliteit en duurzaamheid: Bella Donna, Ecolife, Texeler en Hefel werken allemaal met gecertificeerde materialen.`,
   },
   {
     slug: 'hoeslaken-onderhoud',
