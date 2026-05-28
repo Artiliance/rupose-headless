@@ -54,6 +54,7 @@ export function CheckoutForm() {
         if (cancelled || !container || container.childElementCount > 0 || !PlaceAutocompleteElement) return
         el = new PlaceAutocompleteElement({ includedRegionCodes: ['nl'] })
         el.style.width = '100%'
+        el.style.colorScheme = 'light'
         container.appendChild(el)
         el.addEventListener('gmp-select', async (e: any) => {
           const place = e.placePrediction.toPlace()
@@ -130,7 +131,7 @@ export function CheckoutForm() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <span className="font-sans text-sm font-medium text-foreground">Zoek je adres</span>
-                  <div id="co-address-ac" className="[&_*]:rounded-sm" />
+                  <div id="co-address-ac" className="[&_*]:rounded-sm [color-scheme:light]" />
                   <p className="font-sans text-xs text-muted-foreground">Begin met typen en kies je adres — straat, postcode en plaats worden automatisch ingevuld.</p>
                 </div>
                 <div className="flex flex-col gap-2">
