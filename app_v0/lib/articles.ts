@@ -249,7 +249,7 @@ Heb je een ongebruikelijke maat? Bij Rupose adviseren we je graag welk hoeslaken
     readingTime: 5,
     readTime: '5 min lezen',
     publishedAt: '2025-06-16',
-    image: `${CDN}/lifestyle/MCD9651-Edit-groot.jpeg`,
+    image: `${CDN}/lifestyle/MCD9646-Edit-groot.jpeg`,
     excerpt:
       'Kleine aanpassingen aan je beddengoed en slaapomgeving kunnen een merkbaar verschil maken voor je nachtrust.',
     body: `Goed slapen hoeft niet ingewikkeld te zijn. Vaak zijn het kleine aanpassingen die het grootste verschil maken. Van de temperatuur in je slaapkamer tot de keuze van je beddengoed: hier zijn de meest effectieve verbeteringen.
