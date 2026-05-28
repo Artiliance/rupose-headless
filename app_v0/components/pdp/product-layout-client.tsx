@@ -1,8 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
 import { ProductGallery } from '@/components/pdp/product-gallery'
 import { ProductInfo } from '@/components/pdp/product-info'
 import type { Product } from '@/lib/products'
@@ -37,26 +35,9 @@ export function ProductLayoutClient({
 
       {/* Right — Info */}
       <div className="flex flex-col gap-6">
-        {/* Brand logo — rendered above ProductInfo when brand has a logo */}
-        {brand?.logo && (
-          <Link
-            href={`/merken/${brand.slug}/`}
-            aria-label={`Naar merkpagina van ${brand.name}`}
-            className="inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
-          >
-            <Image
-              src={brand.logo}
-              alt={`${brand.name} logo`}
-              width={120}
-              height={28}
-              className="h-7 w-auto object-contain object-left"
-              unoptimized
-            />
-          </Link>
-        )}
-
         <ProductInfo
           product={product}
+          brand={brand}
           onColorImageChange={setColorOverrideSrc}
         />
       </div>

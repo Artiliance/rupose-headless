@@ -49,9 +49,9 @@ export default async function BrandPage({ params }: Props) {
       shortDesc: p.shortDesc,
     }))
 
-  const featureItems = brand.usps.map((usp) => ({
+  const featureItems = brand.usps.slice(0, 3).map((usp) => ({
     title: usp.title,
-    body: usp.body,
+    description: usp.body,
   }))
 
   return (

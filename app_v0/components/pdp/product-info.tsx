@@ -5,12 +5,16 @@ import { ShoppingCart, Minus, Plus, Truck, RefreshCw, Shield, Leaf } from "lucid
 import { Button } from "@/components/ui/button";
 import { VariantSelector } from "@/components/pdp/variant-selector";
 import { AggregateRating } from "@/components/blocks/aggregate-rating";
+import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { toastSuccess } from "@/lib/toast";
 import type { Product } from "@/lib/products";
+import type { BrandDetail } from "@/lib/brands";
 
 interface ProductInfoProps {
   product: Product
+  brand?: BrandDetail
   onColorImageChange?: (src: string) => void
 }
 
@@ -33,7 +37,7 @@ const USP_ITEMS = [
   },
 ];
 
-export function ProductInfo({ product, onColorImageChange }: ProductInfoProps) {
+export function ProductInfo({ product, brand, onColorImageChange }: ProductInfoProps) {
   const [quantity, setQuantity] = useState(1);
   const [selections, setSelections] = useState<Record<string, string>>({});
   const [addedFeedback, setAddedFeedback] = useState(false);
@@ -59,20 +63,37 @@ export function ProductInfo({ product, onColorImageChange }: ProductInfoProps) {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Brand + in-stock badge */}
-      <div className="flex items-center justify-between">
-        <span className="font-sans text-[11px] uppercase tracking-[0.18em] text-copper font-medium">
-          {product.brand}
-        </span>
+      {/* Merk (logo OF tekst, nooit beide) + voorraad-badge */}
+      <div className="flex items-center justify-between gap-4">
+        {brand?.logo ? (
+          <Link
+            href={`/merken/${brand.slug}/`}
+            aria-label={`Naar merkpagina van ${brand.name}`}
+            className="inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
+          >
+            <Image
+              src={brand.logo}
+              alt={brand.name}
+              width={120}
+              height={28}
+              className="h-6 w-auto object-contain object-left"
+              unoptimized
+            />
+          </Link>
+        ) : (
+          <span className="font-sans text-[11px] uppercase tracking-[0.18em] text-copper font-medium">
+            {product.brand}
+          </span>
+        )}
         <span
           className={cn(
-            "font-sans text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full",
-            product.inStock
+            "font-sans text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full flex-shrink-0",
+            product.inStock !== false
               ? "bg-sage-muted text-sage"
               : "bg-muted text-brown-muted"
           )}
         >
-          {product.inStock ? "Op voorraad" : "Tijdelijk uitverkocht"}
+          {product.inStock !== false ? "Op voorraad" : "Tijdelijk uitverkocht"}
         </span>
       </div>
 
@@ -84,9 +105,9 @@ export function ProductInfo({ product, onColorImageChange }: ProductInfoProps) {
       {/* Rating */}
       <AggregateRating score={4.8} count={847} size="sm" />
 
-      {/* Short description */}
+      {/* Short description (Woo short_description) */}
       <p className="font-sans text-base text-brown-muted leading-relaxed">
-        {product.shortDescription}
+        {product.shortDesc}
       </p>
 
       {/* Price */}
@@ -156,7 +177,7 @@ export function ProductInfo({ product, onColorImageChange }: ProductInfoProps) {
           )}
         >
           <ShoppingCart className="w-4 h-4 mr-2" aria-hidden="true" />
-          {addedFeedback ? "Toegevoegd aan winkelwagen" : "Voeg toe aan winkelwagen"}
+          {addedFeedback ? "Toegevoegd aan winkelwagen" : "Bestellen"}
         </Button>
       </div>
 

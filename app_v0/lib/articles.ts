@@ -1,7 +1,7 @@
 // lib/articles.ts
 // Mock blog articles for slaapadvies pages.
 
-const CDN = 'https://cdn.jsdelivr.net/gh/Artiliances/rupose-headless@main/public/images'
+const CDN = 'https://cdn.jsdelivr.net/gh/Artiliance/rupose-headless@main/public/images'
 
 export type ArticleCategory =
   | 'Materialen'
