@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Heart, ShoppingBag } from 'lucide-react'
+import { ShoppingBag } from 'lucide-react'
 import { toastSuccess } from '@/lib/toast'
 
 export interface ProductCardProps {
@@ -23,8 +22,6 @@ export function ProductCard({
   shortDesc,
   category,
 }: ProductCardProps) {
-  const [wishlisted, setWishlisted] = useState(false)
-
   const cleanDesc = shortDesc
     ? shortDesc
         .replace(/&amp;/g, '&')
@@ -39,16 +36,6 @@ export function ProductCard({
 
   function handleAddToCart() {
     toastSuccess('Toegevoegd aan winkelwagen')
-  }
-
-  function handleWishlist() {
-    if (wishlisted) {
-      setWishlisted(false)
-      toastSuccess('Verwijderd uit wensenlijst')
-    } else {
-      setWishlisted(true)
-      toastSuccess('Toegevoegd aan wensenlijst')
-    }
   }
 
   return (
@@ -76,19 +63,6 @@ export function ProductCard({
             </div>
           )}
         </Link>
-
-        {/* Wishlist button */}
-        <button
-          onClick={handleWishlist}
-          aria-label={wishlisted ? `${name} verwijderen uit wensenlijst` : `${name} toevoegen aan wensenlijst`}
-          aria-pressed={wishlisted}
-          className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-background/80 backdrop-blur-sm shadow-sm text-foreground hover:bg-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1"
-        >
-          <Heart
-            className={`w-4 h-4 transition-colors ${wishlisted ? 'fill-primary stroke-primary' : 'stroke-foreground'}`}
-            aria-hidden="true"
-          />
-        </button>
       </div>
 
       {/* Info */}
