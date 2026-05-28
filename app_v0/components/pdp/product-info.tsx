@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { VariantSelector } from "@/components/pdp/variant-selector";
 import { AggregateRating } from "@/components/blocks/aggregate-rating";
 import { cn } from "@/lib/utils";
+import { toastSuccess } from "@/lib/toast";
 import type { Product } from "@/lib/products";
 
 interface ProductInfoProps {
@@ -45,8 +46,8 @@ export function ProductInfo({ product, onColorImageChange }: ProductInfoProps) {
   }
 
   function handleAddToCart() {
-    // Mock: show brief feedback only
     setAddedFeedback(true);
+    toastSuccess(`${product.name} toegevoegd aan winkelwagen`);
     setTimeout(() => setAddedFeedback(false), 2000);
   }
 
