@@ -2,12 +2,13 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, type LucideIcon } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import { type ReactNode } from 'react'
 import { motion } from 'motion/react'
 import { variantFadeUp, variantStagger, variantScaleIn } from '@/lib/motion'
 
 interface Pillar {
-  icon: LucideIcon
+  icon: ReactNode
   label: string
   detail: string
 }
@@ -113,11 +114,10 @@ export function BrandNarrative({
       {pillars && pillars.length > 0 && (
         <motion.ul variants={itemVariants} className="flex flex-col gap-4">
           {pillars.map((p) => {
-            const Icon = p.icon
             return (
               <li key={p.label} className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mt-0.5">
-                  <Icon className="w-4 h-4 text-primary" aria-hidden="true" />
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 text-primary [&>svg]:w-4 [&>svg]:h-4">
+                  {p.icon}
                 </div>
                 <div>
                   <p className="font-sans text-base font-semibold text-foreground">{p.label}</p>

@@ -17,25 +17,25 @@ const CDN = 'https://cdn.jsdelivr.net/gh/Artiliance/rupose-headless@main/public/
 
 const values = [
   {
-    icon: Star,
+    icon: <Star />,
     title: 'Diepgaande kennis',
     description:
       'Wij kennen elk product dat wij verkopen. Van de vezeleigenschappen van Texelse wol tot de technische specificaties van Hefel Pure Cotton. Die kennis delen we graag.',
   },
   {
-    icon: Sprout,
+    icon: <Sprout />,
     title: 'Duurzaamheid als basis',
     description:
       'We kiezen bewust voor OEKO-TEX gecertificeerde producten, Europese productie en merken die transparant zijn over hun keten. Geen compromissen op dit punt.',
   },
   {
-    icon: Users,
+    icon: <Users />,
     title: 'Persoonlijk advies',
     description:
       'Je bent geen ordernummer bij Rupose. Of je nu belt, mailt of binnenloopt: je krijgt altijd een specialist aan de lijn die echt meedenkt over jouw slaapsituatie.',
   },
   {
-    icon: Heart,
+    icon: <Heart />,
     title: 'Europese kwaliteit',
     description:
       'Onze partners produceren in Duitsland, Oostenrijk en Nederland. Wij geloven dat je kunt voelen waar iets gemaakt is. Europees vakmanschap spreekt voor zich.',

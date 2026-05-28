@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Search, SlidersHorizontal, X, ChevronDown } from 'lucide-react'
@@ -149,7 +149,7 @@ function FilterPanel({
   )
 }
 
-export default function ZoekenPage() {
+function ZoekenContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const inputRef = useRef<HTMLInputElement>(null)
@@ -431,5 +431,13 @@ export default function ZoekenPage() {
         bg="muted"
       />
     </main>
+  )
+}
+
+export default function ZoekenPage() {
+  return (
+    <Suspense fallback={null}>
+      <ZoekenContent />
+    </Suspense>
   )
 }

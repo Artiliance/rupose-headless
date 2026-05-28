@@ -136,7 +136,6 @@ export default async function OrderDetailPage(props: { params: Promise<{ id: str
                         width={64}
                         height={64}
                         className="w-full h-full object-cover"
-                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
                       />
                     </div>
                     <div className="flex-1 min-w-0">

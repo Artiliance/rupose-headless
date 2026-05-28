@@ -4,11 +4,13 @@ import { products, getProductBySlug, getRelatedProducts } from "@/lib/products";
 import { Breadcrumbs } from "@/components/pdp/breadcrumbs";
 import { ProductLayoutClient } from "@/components/pdp/product-layout-client";
 import { ProductTabs } from "@/components/pdp/product-tabs";
+import { BrandVideoSection } from "@/components/pdp/brand-video-section";
 import { RelatedProducts } from "@/components/pdp/related-products";
 import { FaqAccordion } from "@/components/blocks/faq-accordion";
 import { CrossSell } from "@/components/blocks/cross-sell";
 import { RecentlyViewed } from "@/components/blocks/recently-viewed";
 import { getProductFaqs } from "@/lib/faqs";
+import { getBrandByName } from "@/lib/brands";
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>;
@@ -54,6 +56,9 @@ export default async function ProductPage({ params }: PageProps) {
 
   const related = getRelatedProducts(product, 4);
 
+  // Resolve brand for logo, video, etc.
+  const brand = getBrandByName(product.brand)
+
   // Convert gallery strings to image objects for ProductGallery
   const galleryImages = product.gallery.map((src, i) => ({
     src,
@@ -80,7 +85,7 @@ export default async function ProductPage({ params }: PageProps) {
         aria-label={product.name}
         className="container mx-auto px-4 md:px-6 py-10 md:py-16"
       >
-        <ProductLayoutClient product={product} galleryImages={galleryImages} />
+        <ProductLayoutClient product={product} galleryImages={galleryImages} brand={brand} />
       </section>
 
       {/* ── Divider ── */}
@@ -93,6 +98,14 @@ export default async function ProductPage({ params }: PageProps) {
       >
         <ProductTabs product={product} />
       </section>
+
+      {/* ── Brand video (after tabs, before FAQ) ── */}
+      {brand?.videoUrl && (
+        <BrandVideoSection
+          videoUrl={brand.videoUrl}
+          brandName={brand.name}
+        />
+      )}
 
       {/* ── FAQ ── */}
       <FaqAccordion

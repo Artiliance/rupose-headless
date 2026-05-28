@@ -1,11 +1,11 @@
 'use client'
 
-import { type LucideIcon } from 'lucide-react'
+import { type ReactNode } from 'react'
 import { motion } from 'motion/react'
 import { variantFadeUp, variantStagger } from '@/lib/motion'
 
 export interface Feature {
-  icon?: LucideIcon
+  icon?: ReactNode
   title: string
   description: string
 }
@@ -67,16 +67,15 @@ export function FeatureGrid({
           viewport={{ once: true, margin: '-50px' }}
         >
           {features.map((feature) => {
-            const Icon = feature.icon
             return (
               <motion.div
                 key={feature.title}
                 variants={itemVariants}
                 className="flex flex-col gap-4 p-6 rounded-sm border border-border bg-background"
               >
-                {Icon && (
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                    <Icon className="w-5 h-5" aria-hidden="true" />
+                {feature.icon && (
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0 [&>svg]:w-5 [&>svg]:h-5" aria-hidden="true">
+                    {feature.icon}
                   </div>
                 )}
                 <h3 className="font-serif text-xl font-light text-foreground leading-snug">

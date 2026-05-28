@@ -4,6 +4,7 @@ import { PageHeader } from '@/components/blocks/page-header'
 import { ProductCard } from '@/components/product-card'
 import { RecentlyViewed } from '@/components/blocks/recently-viewed'
 import { AdviceTeaser } from '@/components/blocks/advice-teaser'
+import { ContentSection } from '@/components/blocks/content-section'
 import { FaqAccordion } from '@/components/blocks/faq-accordion'
 import { NewsletterCta } from '@/components/blocks/newsletter-cta'
 import { categories } from '@/lib/blocks-data'
@@ -89,6 +90,14 @@ export default async function CategoryPage({ params }: Props) {
         articles={adviceArticles.slice(0, 3)}
         bg="muted"
       />
+
+      {/* SEO text block — only when copy has been authored for this category */}
+      {cat.seoText && (
+        <ContentSection
+          body={cat.seoText}
+          bg="default"
+        />
+      )}
 
       <FaqAccordion
         eyebrow="Veelgestelde vragen"

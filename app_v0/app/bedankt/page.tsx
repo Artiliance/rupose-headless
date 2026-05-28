@@ -113,9 +113,6 @@ export default function BedanktPage() {
                       width={56}
                       height={56}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
-                        ;(e.currentTarget as HTMLImageElement).style.display = 'none'
-                      }}
                     />
                   </div>
                   <div className="flex-1 min-w-0">

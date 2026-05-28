@@ -59,7 +59,7 @@ export function CrossSell({
         {/* Product grid — up to 4 items */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
           {products.slice(0, 4).map((p) => {
-            const price = p.sizes[0]?.price
+            const price = p.sizes?.[0]?.price
             const fmtPrice =
               price !== undefined
                 ? new Intl.NumberFormat('nl-NL', {

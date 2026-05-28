@@ -3,6 +3,12 @@
 
 const CDN = 'https://cdn.jsdelivr.net/gh/Artiliance/rupose-headless@main/public/images'
 
+export interface BrandVideo {
+  type: 'youtube' | 'vimeo'
+  id: string
+  title: string
+}
+
 export interface BrandUsp {
   title: string
   body: string
@@ -20,6 +26,8 @@ export interface BrandDetail {
   story: string[]
   usps: BrandUsp[]
   productSlugs: string[]
+  video?: BrandVideo
+  videoUrl?: string
 }
 
 export const brandDetails: BrandDetail[] = [
@@ -92,6 +100,8 @@ export const brandDetails: BrandDetail[] = [
       },
     ],
     productSlugs: ['texeler-bovenste-beste-hoofdkussen'],
+    video: { type: 'youtube', id: 'Q1thYlrsrbU', title: 'Over Texeler' },
+    videoUrl: 'https://www.youtube.com/watch?v=Q1thYlrsrbU',
   },
   {
     slug: 'hefel',
@@ -127,6 +137,8 @@ export const brandDetails: BrandDetail[] = [
       },
     ],
     productSlugs: ['hefel-pure-cotton-topdekmatras'],
+    video: { type: 'youtube', id: 'pxVNNjDl46E', title: 'Over Hefel' },
+    videoUrl: 'https://www.youtube.com/watch?v=pxVNNjDl46E',
   },
   {
     slug: 'ecolife',
@@ -162,6 +174,8 @@ export const brandDetails: BrandDetail[] = [
       },
     ],
     productSlugs: [],
+    video: { type: 'vimeo', id: '1186255548', title: 'Over Ecolife' },
+    videoUrl: 'https://vimeo.com/1186255548',
   },
   {
     slug: 'homan',
@@ -202,4 +216,9 @@ export const brandDetails: BrandDetail[] = [
 
 export function getBrandBySlug(slug: string): BrandDetail | undefined {
   return brandDetails.find((b) => b.slug === slug)
+}
+
+export function getBrandByName(name: string): BrandDetail | undefined {
+  const lower = name.toLowerCase()
+  return brandDetails.find((b) => b.name.toLowerCase() === lower)
 }

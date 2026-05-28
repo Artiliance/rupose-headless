@@ -10,12 +10,6 @@ import { FaqAccordion } from '@/components/blocks/faq-accordion'
 import { CtaBanner } from '@/components/blocks/cta-banner'
 import { toastSuccess } from '@/lib/toast'
 
-export const metadata: Metadata = {
-  title: 'Contact | Rupose',
-  description:
-    'Neem contact op met Rupose voor vragen over bedtextiel, bestellingen of persoonlijk slaapadvies. Bel, mail of bezoek onze winkel in Haren.',
-}
-
 const contactFaqs = [
   {
     question: 'Hoe lang duurt de levering?',

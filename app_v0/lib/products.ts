@@ -10,6 +10,7 @@ export type ProductSize = {
   label: string
   price: number
   sku: string
+  ean?: string
 }
 
 export type Product = {

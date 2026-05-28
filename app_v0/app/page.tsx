@@ -17,17 +17,17 @@ const CDN = 'https://cdn.jsdelivr.net/gh/Artiliance/rupose-headless@main/public/
 
 const narrativePillars = [
   {
-    icon: Leaf,
+    icon: <Leaf />,
     label: 'Natuurlijke materialen',
     detail: 'Katoen, wol, TENCEL Lyocell. Geen synthetisch.',
   },
   {
-    icon: Award,
+    icon: <Award />,
     label: 'OEKO-TEX Standard 100',
     detail: 'Elk garen getest op schadelijke stoffen',
   },
   {
-    icon: Recycle,
+    icon: <Recycle />,
     label: 'Made in Germany & Europa',
     detail: 'Transparante keten, Europees vakmanschap',
   },

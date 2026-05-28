@@ -18,7 +18,7 @@ const body = `
 <p>Na ontvangst en controle van de retour ontvang je binnen 5 werkdagen je betaling terug via de oorspronkelijke betaalmethode. Bij iDEAL-betalingen verloopt terugbetaling via bankoverschrijving.</p>
 
 <p><strong>Uitzondering: maatwerk en hygiëneproducten</strong></p>
-<p>Op maat gemaakte producten en producten waarbij de hygi\u00eneverpakking is verbroken (zoals kussens zonder originele folie) kunnen niet worden geretourneerd, tenzij er sprake is van een fabricagefout.</p>
+<p>Op maat gemaakte producten en producten waarbij de hygiëneverpakking is verbroken (zoals kussens zonder originele folie) kunnen niet worden geretourneerd, tenzij er sprake is van een fabricagefout.</p>
 
 <p>Heb je vragen over een retour? Neem gerust contact op via info@rupose.nl of bel +31 50 534 4235.</p>
 `

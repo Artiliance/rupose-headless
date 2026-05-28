@@ -13,25 +13,25 @@ export const metadata: Metadata = {
 
 const pillars = [
   {
-    icon: ShieldCheck,
+    icon: <ShieldCheck />,
     title: 'OEKO-TEX Standard 100',
     description:
       'Elk product in ons assortiment is getest op meer dan 100 schadelijke stoffen. OEKO-TEX Standard 100 is het minimale certificaat dat wij accepteren van onze leveranciers.',
   },
   {
-    icon: MapPin,
+    icon: <MapPin />,
     title: 'Europese productie',
     description:
       'Wij kiezen bewust voor merken die in Europa produceren. Kortere logistieke ketens betekenen minder uitstoot, en Europese arbeidsomstandigheden bieden meer zekerheid.',
   },
   {
-    icon: Recycle,
+    icon: <Recycle />,
     title: 'Verantwoord retourbeleid',
     description:
       'Geretourneerde producten die in perfecte staat zijn, gaan terug in het assortiment. Niet in de verbrandingsoven. Beschadigde goederen doneren wij aan lokale goede doelen.',
   },
   {
-    icon: Package,
+    icon: <Package />,
     title: 'Duurzame verpakking',
     description:
       'We versturen in recyclebaar karton zonder plastic vulmateriaal. Onze verzendpartners werken met elektrische bezorgvoertuigen voor last-mile delivery in stedelijk gebied.',

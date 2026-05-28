@@ -15,25 +15,25 @@ export const metadata: Metadata = {
 
 const innovations = [
   {
-    icon: Layers,
+    icon: <Layers />,
     title: 'Bella Donna Jersey stretch',
     description:
       'Formesse ontwikkelde een jersey-katoen met unieke 4-weg stretch. Het hoeslaken past op matrassen van 7 tot 35 cm dik, trekt strak en laat nooit los. Beschikbaar in 54 kleuren.',
   },
   {
-    icon: Thermometer,
+    icon: <Thermometer />,
     title: 'PCM temperatuurregeling',
     description:
       'Phase Change Material (PCM) absorbeert overtollige lichaamswarmte en geeft die terug als je afkoelt. Het resultaat: een constante slaaptemperatuur de hele nacht.',
   },
   {
-    icon: RefreshCw,
+    icon: <RefreshCw />,
     title: 'Hefel Pure Cotton',
     description:
       'Hefel maakte een dekbedvulling van 100% percalkatoen dat dezelfde thermische eigenschappen heeft als dons. Geschikt voor donskussenslopers en wasbaar op 60 graden.',
   },
   {
-    icon: Zap,
+    icon: <Zap />,
     title: 'TENCEL Lyocell vezel',
     description:
       'TENCEL Lyocell wordt gewonnen via een gesloten waterproces uit FSC-gecertificeerd hout. De vezel is 50% zachter dan katoen, neemt vocht sneller op en droogt sneller.',

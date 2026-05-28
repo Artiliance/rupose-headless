@@ -10,6 +10,7 @@ export interface Category {
   count: number
   image: string
   intro: string
+  seoText?: string
 }
 
 export const categories: Category[] = [

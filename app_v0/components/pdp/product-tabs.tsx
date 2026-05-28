@@ -42,6 +42,37 @@ export function ProductTabs({ product }: ProductTabsProps) {
       {/* Specificaties tab */}
       <TabsContent value="specificaties" className="mt-0">
         <dl className="divide-y divide-border">
+          {/* Product identifiers */}
+          {product.sizes?.[0]?.sku && (
+            <div className="flex flex-col sm:flex-row sm:gap-8 py-4">
+              <dt className="font-sans text-base font-medium text-brown uppercase tracking-wider w-full sm:w-52 flex-shrink-0 mb-1 sm:mb-0">
+                Artikelnummer
+              </dt>
+              <dd className="font-sans text-base text-brown-muted flex-1">
+                {product.sizes[0].sku}
+              </dd>
+            </div>
+          )}
+          {product.sizes?.[0]?.ean && (
+            <div className="flex flex-col sm:flex-row sm:gap-8 py-4">
+              <dt className="font-sans text-base font-medium text-brown uppercase tracking-wider w-full sm:w-52 flex-shrink-0 mb-1 sm:mb-0">
+                EAN
+              </dt>
+              <dd className="font-sans text-base text-brown-muted flex-1">
+                {product.sizes[0].ean}
+              </dd>
+            </div>
+          )}
+          {product.categoryLabel && (
+            <div className="flex flex-col sm:flex-row sm:gap-8 py-4">
+              <dt className="font-sans text-base font-medium text-brown uppercase tracking-wider w-full sm:w-52 flex-shrink-0 mb-1 sm:mb-0">
+                Categorie
+              </dt>
+              <dd className="font-sans text-base text-brown-muted flex-1">
+                {product.categoryLabel}
+              </dd>
+            </div>
+          )}
           {(product.specifications ?? []).map((spec) => (
             <div
               key={spec.label}

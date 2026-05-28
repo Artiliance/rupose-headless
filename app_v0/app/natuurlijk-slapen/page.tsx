@@ -15,25 +15,25 @@ export const metadata: Metadata = {
 
 const materials = [
   {
-    icon: Leaf,
+    icon: <Leaf />,
     title: 'TENCEL Lyocell',
     description:
       'Gewonnen uit FSC-gecertificeerd hout via een gesloten waterproces. Zijdezacht, ademend en tot twee keer zo absorberend als katoen. Ideaal voor warme slapers.',
   },
   {
-    icon: Wind,
+    icon: <Wind />,
     title: 'Ganzendons en veren',
     description:
       'Dons reguleert temperatuur beter dan synthetische vulling. Onze donsproducten zijn gecertificeerd RDS (Responsible Down Standard) of NOMITE voor huisstofmijtallergie.',
   },
   {
-    icon: Droplets,
+    icon: <Droplets />,
     title: 'Jersey en percalkatoen',
     description:
       'Percalkatoen ademt beter bij warme nachten. Jersey strekt mee en voelt soepeler. Beide zijn van 100% OEKO-TEX gecertificeerd katoen, geen synthetische toevoegingen.',
   },
   {
-    icon: Sun,
+    icon: <Sun />,
     title: 'Texelse schapenwol',
     description:
       'Wol van het Texelse schaap is van nature temperatuurregulerend, vochtafvoerend en antibacterieel. Anders dan merino is Texelse wol grof genoeg om jaren mee te gaan.',

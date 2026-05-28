@@ -11,25 +11,25 @@ export const metadata: Metadata = {
 
 const methods = [
   {
-    icon: Smartphone,
+    icon: <Smartphone />,
     title: 'iDEAL',
     description:
       'Direct betalen via je eigen bank. Veilig, vertrouwd en direct verwerkt. De meest gebruikte betaalmethode in Nederland.',
   },
   {
-    icon: CreditCard,
+    icon: <CreditCard />,
     title: 'Creditcard',
     description:
       'We accepteren Mastercard en Visa. Betalingen verlopen via een beveiligde gateway met 3D Secure verificatie.',
   },
   {
-    icon: Clock,
+    icon: <Clock />,
     title: 'Achteraf betalen (Klarna)',
     description:
       'Ontvang je bestelling eerst, betaal later. Klarna biedt 14 dagen uitstel zonder extra kosten, onder voorbehoud van goedkeuring.',
   },
   {
-    icon: ShieldCheck,
+    icon: <ShieldCheck />,
     title: 'Bankoverschrijving',
     description:
       'Betalen via overboeking is mogelijk voor zakelijke bestellingen. Neem contact op om dit in te stellen. Bestelling wordt verzonden na ontvangst betaling.',

@@ -15,25 +15,25 @@ export const metadata: Metadata = {
 
 const whyPremium = [
   {
-    icon: Award,
+    icon: <Award />,
     title: 'Bewuste selectie',
     description:
       'Ieder merk dat wij voeren, kennen wij persoonlijk. Wij reizen naar de fabrieken en toetsen elk product op kwaliteit en duurzaamheid.',
   },
   {
-    icon: Leaf,
+    icon: <Leaf />,
     title: 'Europese herkomst',
     description:
       'Onze partners produceren in Duitsland, Oostenrijk en Nederland. Korte ketens, transparante productie, geen bulkimport.',
   },
   {
-    icon: ShieldCheck,
+    icon: <ShieldCheck />,
     title: 'OEKO-TEX gecertificeerd',
     description:
       'Elk garen en elke vezel is getest op schadelijke stoffen. OEKO-TEX Standard 100 is het minimale certificaat dat wij accepteren.',
   },
   {
-    icon: Globe,
+    icon: <Globe />,
     title: 'Generaties vakmanschap',
     description:
       'De merken die wij voeren zijn familiebedrijven met decennialange ervaring. Geen trendy start-ups, maar bewezen vakkennis.',
