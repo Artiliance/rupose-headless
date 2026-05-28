@@ -58,11 +58,11 @@ export function BrandStrip({
           viewport={{ once: true, margin: '-50px' }}
         >
           {brands.map((brand) => (
-            <motion.div key={brand.slug} variants={itemVariants}>
+            <motion.div key={brand.slug} variants={itemVariants} className="h-full">
               <Link
                 href={`/merken/${brand.slug}/`}
                 aria-label={`Meer over ${brand.name}`}
-                className="group flex flex-col items-center gap-3 px-4 py-5 rounded-sm bg-background border border-border hover:border-primary/40 hover:shadow-sm transition-all duration-200 min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hover:-translate-y-0.5"
+                className="group h-full flex flex-col items-center justify-center gap-3 px-4 py-5 rounded-sm bg-background border border-border hover:border-primary/40 hover:shadow-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 hover:-translate-y-0.5"
               >
                 <div className="relative h-14 w-full max-w-[140px] transition-all duration-300">
                   <Image

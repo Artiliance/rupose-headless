@@ -5,7 +5,7 @@ import { Hero } from '@/components/blocks/hero'
 import { FeatureGrid } from '@/components/blocks/feature-grid'
 import { CtaBanner } from '@/components/blocks/cta-banner'
 import { brandDetails } from '@/lib/brands'
-import { Award, Leaf, ShieldCheck, Globe } from 'lucide-react'
+import { Award, Leaf, ShieldCheck, Globe, Users, Truck } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Merken | Rupose',
@@ -37,6 +37,18 @@ const whyPremium = [
     title: 'Generaties vakmanschap',
     description:
       'De merken die wij voeren zijn familiebedrijven met decennialange ervaring. Geen trendy start-ups, maar bewezen vakkennis.',
+  },
+  {
+    icon: <Users />,
+    title: 'Persoonlijk advies',
+    description:
+      'Je bent geen ordernummer. Bel, mail of kom langs in onze winkel in Haren; een specialist denkt mee over jouw slaapsituatie.',
+  },
+  {
+    icon: <Truck />,
+    title: 'Zorgeloos geleverd',
+    description:
+      'Gratis verzending vanaf 75 euro, 30 dagen retourrecht en veilig betalen via iDEAL of creditcard. Premium zonder risico.',
   },
 ]
 

@@ -209,8 +209,8 @@ export const products: Product[] = [
   },
   {
     slug: 'hefel-pure-cotton-topdekmatras',
-    categorySlug: 'toppers',
-    categoryLabel: 'Topdekmatrassen',
+    categorySlug: 'topdekmatras',
+    categoryLabel: 'Topmatrassen',
     brand: 'Hefel',
     name: 'Hefel Pure Cotton topdekmatras',
     shortDesc:

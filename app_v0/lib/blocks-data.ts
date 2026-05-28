@@ -62,14 +62,6 @@ export const categories: Category[] = [
     intro:
       'Een molton beschermt je matras tegen vocht en slijtage zonder het slaapcomfort te beïnvloeden. Met of zonder PCM-temperatuurregeling.',
   },
-  {
-    name: 'Topdekmatrassen',
-    slug: 'toppers',
-    count: 0,
-    image: `${CDN}/heroes/MCD9691-groot.jpeg`,
-    intro:
-      'Een topdekmatras combineert extra comfort met matrasbescherming. Onze topdekmatrassen zijn verkrijgbaar in koudschuim en traagschuim.',
-  },
 ]
 
 export interface Brand {
