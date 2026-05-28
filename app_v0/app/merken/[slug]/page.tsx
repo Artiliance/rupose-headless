@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { PageHeader } from '@/components/blocks/page-header'
 import { BrandNarrative } from '@/components/blocks/brand-narrative'
+import { BrandVideo } from '@/components/blocks/brand-video'
 import { FeatureGrid } from '@/components/blocks/feature-grid'
 import { ProductCarousel } from '@/components/blocks/product-carousel'
 import { ReviewsCarousel } from '@/components/blocks/reviews-carousel'
@@ -92,6 +93,14 @@ export default async function BrandPage({ params }: Props) {
         image={brand.heroImage}
         imageAlt={`${brand.name}, ${brand.tagline}`}
       />
+
+      {brand.video && (
+        <BrandVideo
+          video={brand.video}
+          brandName={brand.name}
+          bg="muted"
+        />
+      )}
 
       <FeatureGrid
         eyebrow="Waarom kiezen voor dit merk"

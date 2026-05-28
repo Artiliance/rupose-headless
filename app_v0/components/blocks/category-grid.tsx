@@ -104,11 +104,10 @@ export function CategoryGrid({
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
         >
-          {categories.map((cat, i) => (
+          {categories.map((cat) => (
             <motion.div
               key={cat.slug}
               variants={itemVariants}
-              className={i === 0 ? 'col-span-2 md:col-span-2' : ''}
             >
               <CategoryCard {...cat} />
             </motion.div>

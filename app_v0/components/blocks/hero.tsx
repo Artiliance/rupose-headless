@@ -272,7 +272,7 @@ function HeroSimple({
   const imageV = variantScaleIn(false, 0.97)
 
   return (
-    <header className="bg-secondary border-b border-border pt-24 md:pt-28 pb-12 md:pb-16" aria-label="Paginakop">
+    <header className="bg-secondary border-b border-border pt-32 md:pt-36 pb-12 md:pb-16" aria-label="Paginakop">
       <div className="container mx-auto px-4 md:px-6">
         {/* Breadcrumbs */}
         {breadcrumbs && breadcrumbs.length > 0 && (
