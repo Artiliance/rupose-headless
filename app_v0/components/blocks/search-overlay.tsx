@@ -4,9 +4,9 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Search, X, Clock, TrendingUp, ArrowRight } from 'lucide-react'
+import { Search, X, Clock, TrendingUp, ArrowRight, Store } from 'lucide-react'
 import { Dialog, DialogContent, DialogTitle, DialogClose } from '@/components/ui/dialog'
-import { searchProducts, popularSearches } from '@/lib/search'
+import { searchProducts, searchBrands, popularSearches, type BrandSearchResult } from '@/lib/search'
 import type { Product } from '@/lib/products'
 
 const MAX_RECENT = 5
@@ -42,6 +42,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
   const [query, setQuery] = useState('')
   const [debouncedQuery, setDebouncedQuery] = useState('')
   const [suggestions, setSuggestions] = useState<Product[]>([])
+  const [brandHits, setBrandHits] = useState<BrandSearchResult[]>([])
   const [recent, setRecent] = useState<string[]>([])
 
   // Reset + load recent each time the popup opens
@@ -50,6 +51,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
     setRecent(loadRecent())
     setQuery('')
     setSuggestions([])
+    setBrandHits([])
   }, [open])
 
   // Debounce query
@@ -58,13 +60,15 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
     return () => clearTimeout(timer)
   }, [query])
 
-  // Live suggestions
+  // Live suggestions (products + brands)
   useEffect(() => {
     if (debouncedQuery.trim().length < 2) {
       setSuggestions([])
+      setBrandHits([])
       return
     }
     setSuggestions(searchProducts(debouncedQuery).slice(0, 5))
+    setBrandHits(searchBrands(debouncedQuery).slice(0, 3))
   }, [debouncedQuery])
 
   const submit = useCallback(
@@ -78,7 +82,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
     [router, onClose]
   )
 
-  const hasSuggestions = suggestions.length > 0
+  const hasResults = suggestions.length > 0 || brandHits.length > 0
 
   return (
     <Dialog open={open} onOpenChange={(o) => !o && onClose()}>
@@ -116,8 +120,50 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
 
         {/* Body */}
         <div className="max-h-[60vh] overflow-y-auto px-5 py-5">
-          {hasSuggestions ? (
+          {hasResults ? (
             <>
+              {brandHits.length > 0 && (
+                <div className="mb-6">
+                  <p className="font-sans text-xs uppercase tracking-widest text-muted-foreground mb-3">
+                    Merken
+                  </p>
+                  <ul className="flex flex-col gap-1">
+                    {brandHits.map((brand) => (
+                      <li key={brand.slug}>
+                        <Link
+                          href={`/merken/${brand.slug}/`}
+                          onClick={onClose}
+                          className="flex items-center gap-3 group min-h-[56px] p-2 -mx-2 rounded-sm hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        >
+                          <div className="relative w-12 h-12 rounded-sm overflow-hidden bg-secondary flex-shrink-0 flex items-center justify-center p-1.5 [color-scheme:light]">
+                            <Image
+                              src={brand.logo}
+                              alt={brand.name}
+                              fill
+                              className="object-contain p-1.5"
+                              unoptimized
+                              sizes="48px"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-sans text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
+                              {brand.name}
+                            </p>
+                            <p className="font-sans text-xs text-muted-foreground truncate">
+                              <Store className="inline w-3 h-3 mr-1 -mt-0.5" aria-hidden="true" />
+                              Merkpagina &middot; {brand.tagline}
+                            </p>
+                          </div>
+                          <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0" aria-hidden="true" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {suggestions.length > 0 && (
+                <>
               <p className="font-sans text-xs uppercase tracking-widest text-muted-foreground mb-3">
                 Producten
               </p>
@@ -159,6 +205,8 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
                 Bekijk alle resultaten voor &ldquo;{query.trim()}&rdquo;
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </button>
+                </>
+              )}
             </>
           ) : (
             <div className="flex flex-col gap-6">
@@ -204,7 +252,7 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
 
               {query.trim().length >= 2 && (
                 <p className="font-sans text-sm text-muted-foreground">
-                  Geen producten gevonden voor &ldquo;{query.trim()}&rdquo;. Druk op Enter om alle resultaten te bekijken.
+                  Geen producten of merken gevonden voor &ldquo;{query.trim()}&rdquo;. Druk op Enter om alle resultaten te bekijken.
                 </p>
               )}
             </div>

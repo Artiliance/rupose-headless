@@ -1,4 +1,21 @@
 import { products, type Product } from './products'
+import { brandDetails } from './brands'
+
+export interface BrandSearchResult {
+  slug: string
+  name: string
+  logo: string
+  tagline: string
+}
+
+/** Matches brand pages by name when a brand term is typed in the search bar. */
+export function searchBrands(query: string): BrandSearchResult[] {
+  const q = query.trim().toLowerCase()
+  if (!q) return []
+  return brandDetails
+    .filter((b) => b.name.toLowerCase().includes(q) || b.fullName.toLowerCase().includes(q))
+    .map((b) => ({ slug: b.slug, name: b.name, logo: b.logo, tagline: b.tagline }))
+}
 
 export interface SearchFilters {
   categories?: string[]
