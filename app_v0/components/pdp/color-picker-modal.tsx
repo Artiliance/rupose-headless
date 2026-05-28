@@ -18,6 +18,8 @@ interface ColorPickerModalProps {
   onClose: () => void
   selected: BellaDonnaColor | null
   onConfirm: (color: BellaDonnaColor) => void
+  /** Palette to show. Defaults to the Bella Donna palette. */
+  colors?: BellaDonnaColor[]
 }
 
 function useDebounce<T>(value: T, delay: number): T {
@@ -34,9 +36,11 @@ export function ColorPickerModal({
   onClose,
   selected,
   onConfirm,
+  colors = bellaDonnaColors,
 }: ColorPickerModalProps) {
   const [query, setQuery] = useState('')
   const [activeFamily, setActiveFamily] = useState<ColorFamily>('Alle')
+  const hasFamilies = colors.some((c) => c.family)
   const [pendingColor, setPendingColor] = useState<BellaDonnaColor | null>(
     selected
   )
@@ -51,7 +55,7 @@ export function ColorPickerModal({
     }
   }, [open, selected])
 
-  const filtered = bellaDonnaColors.filter((c) => {
+  const filtered = colors.filter((c) => {
     const matchesFamily =
       activeFamily === 'Alle' || c.family === activeFamily
     const matchesQuery =
@@ -98,7 +102,7 @@ export function ColorPickerModal({
                 Kies je kleur
               </DialogTitle>
               <p className="font-sans text-sm text-muted-foreground mt-0.5">
-                {bellaDonnaColors.length} kleuren beschikbaar
+                {colors.length} kleuren beschikbaar
               </p>
             </div>
           </div>
@@ -129,7 +133,8 @@ export function ColorPickerModal({
             )}
           </div>
 
-          {/* Family filter chips */}
+          {/* Family filter chips — only when the palette carries families */}
+          {hasFamilies && (
           <div
             className="flex gap-2 overflow-x-auto pb-1 mt-3 scrollbar-hide"
             role="group"
@@ -151,6 +156,7 @@ export function ColorPickerModal({
               </button>
             ))}
           </div>
+          )}
         </DialogHeader>
 
         {/* ── Grid ── */}
@@ -191,14 +197,21 @@ export function ColorPickerModal({
                           : 'border-border group-hover:border-brown/40'
                       )}
                     >
-                      <Image
-                        src={color.image}
-                        alt={color.name}
-                        fill
-                        className="object-cover object-center"
-                        unoptimized
-                        sizes="48px"
-                      />
+                      {color.image.startsWith('#') ? (
+                        <div
+                          className="absolute inset-0"
+                          style={{ backgroundColor: color.image }}
+                        />
+                      ) : (
+                        <Image
+                          src={color.image}
+                          alt={color.name}
+                          fill
+                          className="object-cover object-center"
+                          unoptimized
+                          sizes="48px"
+                        />
+                      )}
                       {/* Selected checkmark overlay */}
                       {isSelected && (
                         <div

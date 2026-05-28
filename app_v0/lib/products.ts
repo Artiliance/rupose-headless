@@ -1,3 +1,5 @@
+import { dommelinProducts } from './dommelin-products'
+
 const GH = 'https://cdn.jsdelivr.net/gh/Artiliance/rupose-headless@main/public/images'
 
 export type ColourSwatch = {
@@ -289,6 +291,7 @@ export const products: Product[] = [
     returnPolicy:
       'Retourneren binnen 30 dagen, ongewassen en in originele verpakking.',
   },
+  ...dommelinProducts,
 ]
 
 export function getProductBySlug(slug: string): Product | undefined {

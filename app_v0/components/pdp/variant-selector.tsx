@@ -160,13 +160,13 @@ export function VariantSelector({
 
   function handleBdConfirm(color: BellaDonnaColor) {
     setBdSelected(color)
-    onColorImageChange?.(color.image)
+    if (!color.image.startsWith('#')) onColorImageChange?.(color.image)
     toastSuccess(`Kleur gewijzigd naar ${color.name}`)
   }
 
   function handleBdQuickSelect(color: BellaDonnaColor) {
     setBdSelected(color)
-    onColorImageChange?.(color.image)
+    if (!color.image.startsWith('#')) onColorImageChange?.(color.image)
     toastSuccess(`Kleur gewijzigd naar ${color.name}`)
   }
 
@@ -264,14 +264,21 @@ export function VariantSelector({
                         : 'border-border hover:border-brown/40'
                     )}
                   >
-                    <Image
-                      src={color.image}
-                      alt={color.name}
-                      fill
-                      className="object-cover object-center"
-                      unoptimized
-                      sizes="44px"
-                    />
+                    {color.image.startsWith('#') ? (
+                      <div
+                        className="absolute inset-0"
+                        style={{ backgroundColor: color.image }}
+                      />
+                    ) : (
+                      <Image
+                        src={color.image}
+                        alt={color.name}
+                        fill
+                        className="object-cover object-center"
+                        unoptimized
+                        sizes="44px"
+                      />
+                    )}
                   </button>
                 )
               })}
@@ -295,14 +302,21 @@ export function VariantSelector({
                           : 'border-border hover:border-brown/40'
                       )}
                     >
-                      <Image
-                        src={color.image}
-                        alt={color.name}
-                        fill
-                        className="object-cover object-center"
-                        unoptimized
-                        sizes="44px"
-                      />
+                      {color.image.startsWith('#') ? (
+                        <div
+                          className="absolute inset-0"
+                          style={{ backgroundColor: color.image }}
+                        />
+                      ) : (
+                        <Image
+                          src={color.image}
+                          alt={color.name}
+                          fill
+                          className="object-cover object-center"
+                          unoptimized
+                          sizes="44px"
+                        />
+                      )}
                     </button>
                   )
                 })}
@@ -318,9 +332,10 @@ export function VariantSelector({
                 open={modalOpen}
                 onClose={() => setModalOpen(false)}
                 selected={bdSelected}
+                colors={asBdColors}
                 onConfirm={(c) => {
                   setBdSelected(c)
-                  onColorImageChange?.(c.image)
+                  if (!c.image.startsWith('#')) onColorImageChange?.(c.image)
                   toastSuccess(`Kleur gewijzigd naar ${c.name}`)
                   setModalOpen(false)
                 }}

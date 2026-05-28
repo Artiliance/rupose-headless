@@ -62,6 +62,22 @@ export const categories: Category[] = [
     intro:
       'Een molton beschermt je matras tegen vocht en slijtage zonder het slaapcomfort te beïnvloeden. Met of zonder PCM-temperatuurregeling.',
   },
+  {
+    name: 'Dekbedovertrekken',
+    slug: 'dekbedovertrekken',
+    count: 3,
+    image: `${CDN}/heroes/MCD9691-groot.jpeg`,
+    intro:
+      'Dekbedovertrekken en -sets in percal en satijn, in een breed kleurenpalet. Zacht, ademend en strak van pasvorm.',
+  },
+  {
+    name: 'Badtextiel',
+    slug: 'badtextiel',
+    count: 3,
+    image: `${CDN}/heroes/MCD9691-groot.jpeg`,
+    intro:
+      'Handdoeken, badlakens en douchelakens van absorberend katoen, afgestemd op de slaapkamercollectie.',
+  },
 ]
 
 export interface Brand {
