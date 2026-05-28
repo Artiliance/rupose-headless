@@ -170,7 +170,7 @@ export const products: Product[] = [
     slug: 'plateau-molton-tencel',
     categorySlug: 'moltons',
     categoryLabel: 'Molton & beschermers',
-    brand: 'Rupose',
+    brand: 'Hefel',
     name: 'Plateau Molton Tencel',
     shortDesc:
       'PCM-technologie en Tencel-vulling. Fris, droog en comfortabel. Ideaal voor wie warm slaapt.',
@@ -252,7 +252,7 @@ export const products: Product[] = [
     slug: 'topmatras-elite-3',
     categorySlug: 'topdekmatras',
     categoryLabel: 'Topmatrassen',
-    brand: 'Rupose',
+    brand: 'Ecolife',
     name: 'Topmatras Elite 3',
     shortDesc:
       'Drielagen comfortsysteem. Koudschuim, traagschuim en zacht afdeklaagje. Verlengt de levensduur van je matras.',

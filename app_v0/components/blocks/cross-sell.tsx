@@ -7,13 +7,18 @@ import { Button } from '@/components/ui/button'
 import { toastSuccess } from '@/lib/toast'
 import { cn } from '@/lib/utils'
 import type { Product } from '@/lib/products'
+import type { FeaturedProduct } from '@/lib/blocks-data'
 
 type CrossSellVariant = 'also-bought' | 'bundle'
+
+type CrossSellProduct =
+  | Pick<Product, 'slug' | 'categorySlug' | 'name' | 'image' | 'shortDesc' | 'sizes' | 'badge'>
+  | FeaturedProduct
 
 interface Props {
   variant?: CrossSellVariant
   title?: string
-  products: Pick<Product, 'slug' | 'categorySlug' | 'name' | 'image' | 'shortDesc' | 'sizes' | 'badge'>[]
+  products: CrossSellProduct[]
   bg?: 'default' | 'muted'
 }
 
@@ -59,9 +64,11 @@ export function CrossSell({
         {/* Product grid — up to 4 items */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
           {products.slice(0, 4).map((p) => {
-            const price = p.sizes?.[0]?.price
+            const categorySlug = 'categorySlug' in p ? p.categorySlug : p.category
+            const badge = 'badge' in p ? p.badge : undefined
+            const price = 'sizes' in p ? p.sizes?.[0]?.price : Number(p.price)
             const fmtPrice =
-              price !== undefined
+              price !== undefined && !Number.isNaN(price)
                 ? new Intl.NumberFormat('nl-NL', {
                     style: 'currency',
                     currency: 'EUR',
@@ -73,14 +80,14 @@ export function CrossSell({
               <div key={p.slug} className="group flex flex-col gap-3">
                 {/* Image */}
                 <Link
-                  href={`/winkel/${p.categorySlug}/${p.slug}/`}
+                  href={`/winkel/${categorySlug}/${p.slug}/`}
                   className="block relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                   aria-label={p.name}
                   tabIndex={0}
                 >
-                  {p.badge && (
+                  {badge && (
                     <span className="absolute top-2 left-2 z-10 bg-primary text-primary-foreground font-sans text-xs font-medium px-2 py-0.5 rounded-sm">
-                      {p.badge}
+                      {badge}
                     </span>
                   )}
                   <Image
@@ -96,7 +103,7 @@ export function CrossSell({
                 {/* Text */}
                 <div className="flex flex-col gap-1 flex-1">
                   <Link
-                    href={`/winkel/${p.categorySlug}/${p.slug}/`}
+                    href={`/winkel/${categorySlug}/${p.slug}/`}
                     className="font-sans text-sm font-medium text-foreground leading-snug line-clamp-2 hover:text-primary transition-colors"
                   >
                     {p.name}
