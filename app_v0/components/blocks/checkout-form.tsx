@@ -136,16 +136,16 @@ export function CheckoutForm() {
                 </div>
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="co-street" className="font-sans text-sm font-medium">Straat en huisnummer</Label>
-                  <Input id="co-street" type="text" autoComplete="street-address" className="rounded-sm h-11 font-sans text-base" />
+                  <Input id="co-street" type="text" autoComplete="street-address" readOnly tabIndex={-1} className="rounded-sm h-11 font-sans text-base bg-secondary/40 cursor-not-allowed focus-visible:ring-0" />
                 </div>
                 <div className="grid grid-cols-[1fr_2fr] gap-4">
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="co-zip" className="font-sans text-sm font-medium">Postcode</Label>
-                    <Input id="co-zip" type="text" autoComplete="postal-code" className="rounded-sm h-11 font-sans text-base" />
+                    <Input id="co-zip" type="text" autoComplete="postal-code" readOnly tabIndex={-1} className="rounded-sm h-11 font-sans text-base bg-secondary/40 cursor-not-allowed focus-visible:ring-0" />
                   </div>
                   <div className="flex flex-col gap-2">
                     <Label htmlFor="co-city" className="font-sans text-sm font-medium">Plaats</Label>
-                    <Input id="co-city" type="text" autoComplete="address-level2" className="rounded-sm h-11 font-sans text-base" />
+                    <Input id="co-city" type="text" autoComplete="address-level2" readOnly tabIndex={-1} className="rounded-sm h-11 font-sans text-base bg-secondary/40 cursor-not-allowed focus-visible:ring-0" />
                   </div>
                 </div>
               </div>
