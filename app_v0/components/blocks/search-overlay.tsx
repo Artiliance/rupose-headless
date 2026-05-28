@@ -122,8 +122,54 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
         <div className="max-h-[60vh] overflow-y-auto px-5 py-5">
           {hasResults ? (
             <>
+              {suggestions.length > 0 && (
+                <div className={brandHits.length > 0 ? 'mb-6' : ''}>
+                  <p className="font-sans text-xs uppercase tracking-widest text-muted-foreground mb-3">
+                    Producten
+                  </p>
+                  <ul className="flex flex-col gap-1">
+                    {suggestions.map((product) => (
+                      <li key={product.slug}>
+                        <Link
+                          href={`/winkel/${product.categorySlug}/${product.slug}/`}
+                          onClick={onClose}
+                          className="flex items-center gap-3 group min-h-[56px] p-2 -mx-2 rounded-sm hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        >
+                          <div className="relative w-12 h-12 rounded-sm overflow-hidden bg-secondary flex-shrink-0">
+                            <Image
+                              src={product.image}
+                              alt={product.name}
+                              fill
+                              className="object-cover"
+                              unoptimized
+                              sizes="48px"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className="font-sans text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
+                              {product.name}
+                            </p>
+                            <p className="font-sans text-xs text-muted-foreground">
+                              {product.brand} &middot; {product.categoryLabel}
+                            </p>
+                          </div>
+                          <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0" aria-hidden="true" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    onClick={() => submit(query)}
+                    className="mt-3 w-full flex items-center justify-center gap-2 font-sans text-sm text-primary hover:text-primary/80 transition-colors border-t border-border pt-4 min-h-[44px]"
+                  >
+                    Bekijk alle resultaten voor &ldquo;{query.trim()}&rdquo;
+                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </button>
+                </div>
+              )}
+
               {brandHits.length > 0 && (
-                <div className="mb-6">
+                <div>
                   <p className="font-sans text-xs uppercase tracking-widest text-muted-foreground mb-3">
                     Merken
                   </p>
@@ -160,52 +206,6 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
                     ))}
                   </ul>
                 </div>
-              )}
-
-              {suggestions.length > 0 && (
-                <>
-              <p className="font-sans text-xs uppercase tracking-widest text-muted-foreground mb-3">
-                Producten
-              </p>
-              <ul className="flex flex-col gap-1">
-                {suggestions.map((product) => (
-                  <li key={product.slug}>
-                    <Link
-                      href={`/winkel/${product.categorySlug}/${product.slug}/`}
-                      onClick={onClose}
-                      className="flex items-center gap-3 group min-h-[56px] p-2 -mx-2 rounded-sm hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      <div className="relative w-12 h-12 rounded-sm overflow-hidden bg-secondary flex-shrink-0">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          fill
-                          className="object-cover"
-                          unoptimized
-                          sizes="48px"
-                        />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="font-sans text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
-                          {product.name}
-                        </p>
-                        <p className="font-sans text-xs text-muted-foreground">
-                          {product.brand} &middot; {product.categoryLabel}
-                        </p>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0" aria-hidden="true" />
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <button
-                onClick={() => submit(query)}
-                className="mt-3 w-full flex items-center justify-center gap-2 font-sans text-sm text-primary hover:text-primary/80 transition-colors border-t border-border pt-4 min-h-[44px]"
-              >
-                Bekijk alle resultaten voor &ldquo;{query.trim()}&rdquo;
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </button>
-                </>
               )}
             </>
           ) : (
