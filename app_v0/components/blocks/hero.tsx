@@ -304,20 +304,8 @@ function HeroSimple({
           </nav>
         )}
 
-        <div className={`grid grid-cols-1 ${image ? 'lg:grid-cols-2 gap-12 items-center' : ''}`}>
+        <div className={`grid grid-cols-1 ${image || logo ? 'lg:grid-cols-2 gap-12 items-center' : ''}`}>
           <motion.div variants={containerV} initial="hidden" animate="visible">
-            {logo && (
-              <motion.div variants={itemV} className="relative h-12 w-40 mb-5">
-                <Image
-                  src={logo}
-                  alt={logoAlt ?? `${title} logo`}
-                  fill
-                  className="object-contain object-left"
-                  unoptimized
-                  sizes="160px"
-                />
-              </motion.div>
-            )}
             {eyebrow && (
               <motion.p variants={itemV} className="font-sans text-xs tracking-[0.2em] uppercase text-primary mb-4 font-medium">
                 {eyebrow}
@@ -376,6 +364,26 @@ function HeroSimple({
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
+            </motion.div>
+          )}
+
+          {logo && !image && (
+            <motion.div
+              className="flex justify-start lg:justify-end"
+              variants={imageV}
+              initial="hidden"
+              animate="visible"
+            >
+              <div className="relative h-24 w-56 md:h-28 md:w-64">
+                <Image
+                  src={logo}
+                  alt={logoAlt ?? `${title} logo`}
+                  fill
+                  className="object-contain object-left lg:object-right"
+                  unoptimized
+                  sizes="256px"
+                />
+              </div>
             </motion.div>
           )}
         </div>
