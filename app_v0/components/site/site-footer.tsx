@@ -94,12 +94,12 @@ export function SiteFooter() {
               <h3 className="font-serif text-base font-medium text-primary-foreground tracking-wide">
                 {col.title}
               </h3>
-              <ul className="space-y-2.5">
+              <ul className="space-y-1.5">
                 {col.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-base font-sans text-primary-foreground/60 hover:text-primary-foreground transition-colors min-h-[44px] inline-flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brown"
+                      className="text-base font-sans text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-flex items-center py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-foreground/50 focus-visible:ring-offset-2 focus-visible:ring-offset-brown"
                     >
                       {link.label}
                     </Link>
@@ -114,12 +114,22 @@ export function SiteFooter() {
       {/* Bottom bar */}
       <div className="border-t border-primary-foreground/10">
         <div className="container mx-auto px-4 md:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm font-sans text-primary-foreground/40">
-          <span>&copy; {new Date().getFullYear()} Rupose. Alle rechten voorbehouden.</span>
+          <span>
+            &copy; {new Date().getFullYear()} Rupose. Alle rechten voorbehouden. &middot;{' '}
+            <a
+              href="https://artiliance.nl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary-foreground/70 transition-colors"
+            >
+              Website door Artiliance
+            </a>
+          </span>
           <div className="flex flex-wrap items-center gap-4">
-            <Link href="/privacyverklaring/" className="hover:text-primary-foreground/70 transition-colors min-h-[44px] inline-flex items-center">
+            <Link href="/privacyverklaring/" className="hover:text-primary-foreground/70 transition-colors inline-flex items-center py-1">
               Privacyverklaring
             </Link>
-            <Link href="/algemene-voorwaarden/" className="hover:text-primary-foreground/70 transition-colors min-h-[44px] inline-flex items-center">
+            <Link href="/algemene-voorwaarden/" className="hover:text-primary-foreground/70 transition-colors inline-flex items-center py-1">
               Algemene voorwaarden
             </Link>
           </div>
