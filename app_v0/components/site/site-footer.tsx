@@ -52,15 +52,10 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
           {/* Brand col */}
           <div className="space-y-5">
-              <Link href="/" aria-label="Rupose, home">
-              <Image
-                src={LOGO_URL}
-                alt="Rupose"
-                width={130}
-                height={38}
-                className="h-9 w-auto brightness-0 invert"
-                unoptimized
-              />
+              <Link href="/" aria-label="Rupose, home" className="inline-block">
+              <span className="font-serif text-2xl font-medium tracking-[0.18em] text-primary-foreground">
+                RUPOSE
+              </span>
             </Link>
             <p className="text-base text-primary-foreground/70 leading-relaxed font-sans">
               Premium specialist in slaapcomfort. Hoogwaardig bedtextiel van
