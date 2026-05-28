@@ -1,13 +1,14 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { CreditCard, Smartphone, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toastSuccess } from '@/lib/toast'
+import { loadGooglePlaces } from '@/lib/google-maps'
 
 const CDN = 'https://cdn.jsdelivr.net/gh/Artiliance/rupose-headless@main/public/images'
 const mockOrderLines = [
@@ -38,6 +39,42 @@ const paymentMethods = [
 export function CheckoutForm() {
   const [payment, setPayment] = useState('ideal')
   const router = useRouter()
+
+  // Google adres-autocomplete op het straatveld -> vult Woo-velden straat/postcode/plaats.
+  // Optionele enhancement: zonder NEXT_PUBLIC_GOOGLE_MAPS_API_KEY doet de checkout gewoon niets extra's.
+  useEffect(() => {
+    const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+    if (!key) return
+    let ac: any
+    loadGooglePlaces(key)
+      .then((g: any) => {
+        const streetEl = document.getElementById('co-street') as HTMLInputElement | null
+        if (!streetEl || !g?.maps?.places) return
+        ac = new g.maps.places.Autocomplete(streetEl, {
+          componentRestrictions: { country: 'nl' },
+          fields: ['address_components'],
+          types: ['address'],
+        })
+        ac.addListener('place_changed', () => {
+          const comps: any[] = ac.getPlace()?.address_components || []
+          const get = (t: string) => comps.find((c) => c.types.includes(t))?.long_name || ''
+          const route = get('route')
+          const nr = get('street_number')
+          const zip = get('postal_code')
+          const city = get('locality') || get('postal_town') || get('administrative_area_level_2')
+          const zipEl = document.getElementById('co-zip') as HTMLInputElement | null
+          const cityEl = document.getElementById('co-city') as HTMLInputElement | null
+          if (route) streetEl.value = `${route} ${nr}`.trim()
+          if (zipEl && zip) zipEl.value = zip
+          if (cityEl && city) cityEl.value = city
+        })
+      })
+      .catch(() => {})
+    return () => {
+      const g = (window as any).google
+      if (ac && g?.maps?.event) g.maps.event.clearInstanceListeners(ac)
+    }
+  }, [])
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
