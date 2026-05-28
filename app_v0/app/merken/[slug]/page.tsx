@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import { PageHeader } from '@/components/blocks/page-header'
 import { BrandNarrative } from '@/components/blocks/brand-narrative'
 import { BrandVideo } from '@/components/blocks/brand-video'
@@ -57,35 +56,16 @@ export default async function BrandPage({ params }: Props) {
   return (
     <main>
       <PageHeader
+        logo={brand.logo}
+        logoAlt={`${brand.name} logo`}
         eyebrow={brand.country}
         title={brand.name}
-        intro={brand.tagline}
+        intro={brand.intro}
         breadcrumbs={[
           { label: 'Merken', href: '/merken/' },
           { label: brand.name },
         ]}
       />
-
-      {/* Brand logo + hero image */}
-      <section className="py-10 bg-secondary border-b border-border">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row items-center gap-6 md:gap-10">
-            <div className="relative h-16 w-48 flex-shrink-0">
-              <Image
-                src={brand.logo}
-                alt={brand.name}
-                fill
-                className="object-contain"
-                unoptimized
-                sizes="192px"
-              />
-            </div>
-            <p className="font-sans text-base text-muted-foreground leading-relaxed max-w-xl">
-              {brand.intro}
-            </p>
-          </div>
-        </div>
-      </section>
 
       <BrandNarrative
         eyebrow={`Over ${brand.name}`}

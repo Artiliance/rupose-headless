@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Search, X, Clock, TrendingUp, ArrowRight } from 'lucide-react'
-import { cn } from '@/lib/utils'
+import { Dialog, DialogContent, DialogTitle, DialogClose } from '@/components/ui/dialog'
 import { searchProducts, popularSearches } from '@/lib/search'
 import type { Product } from '@/lib/products'
 
@@ -18,6 +18,8 @@ function loadRecent(): string[] {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY) ?? '[]')
   } catch {
+    console.warn('[search] recent-searches in localStorage was corrupt; resetting')
+    localStorage.removeItem(STORAGE_KEY)
     return []
   }
 }
@@ -36,21 +38,18 @@ interface SearchOverlayProps {
 export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
   const router = useRouter()
   const inputRef = useRef<HTMLInputElement>(null)
-  const overlayRef = useRef<HTMLDivElement>(null)
 
   const [query, setQuery] = useState('')
   const [debouncedQuery, setDebouncedQuery] = useState('')
   const [suggestions, setSuggestions] = useState<Product[]>([])
   const [recent, setRecent] = useState<string[]>([])
 
-  // Load recent on open
+  // Reset + load recent each time the popup opens
   useEffect(() => {
-    if (open) {
-      setRecent(loadRecent())
-      setQuery('')
-      setSuggestions([])
-      setTimeout(() => inputRef.current?.focus(), 80)
-    }
+    if (!open) return
+    setRecent(loadRecent())
+    setQuery('')
+    setSuggestions([])
   }, [open])
 
   // Debounce query
@@ -65,35 +64,8 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
       setSuggestions([])
       return
     }
-    const results = searchProducts(debouncedQuery)
-    setSuggestions(results.slice(0, 4))
+    setSuggestions(searchProducts(debouncedQuery).slice(0, 5))
   }, [debouncedQuery])
-
-  // Close on Escape
-  useEffect(() => {
-    if (!open) return
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
-    }
-    window.addEventListener('keydown', handler)
-    return () => window.removeEventListener('keydown', handler)
-  }, [open, onClose])
-
-  // Close on outside click
-  useEffect(() => {
-    if (!open) return
-    const handler = (e: MouseEvent) => {
-      if (overlayRef.current && !overlayRef.current.contains(e.target as Node)) {
-        onClose()
-      }
-    }
-    // slight delay so the trigger button click doesn't immediately close
-    const id = setTimeout(() => document.addEventListener('mousedown', handler), 100)
-    return () => {
-      clearTimeout(id)
-      document.removeEventListener('mousedown', handler)
-    }
-  }, [open, onClose])
 
   const submit = useCallback(
     (term: string) => {
@@ -106,61 +78,94 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
     [router, onClose]
   )
 
-  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key === 'Enter') submit(query)
-  }
-
-  if (!open) return null
+  const hasSuggestions = suggestions.length > 0
 
   return (
-    <>
-      {/* Backdrop */}
-      <div
-        className="fixed inset-0 z-[60] bg-black/30 backdrop-blur-[2px]"
-        aria-hidden="true"
-      />
-
-      {/* Panel */}
-      <div
-        ref={overlayRef}
-        role="dialog"
-        aria-label="Zoeken"
-        aria-modal="true"
-        className="fixed top-0 left-0 right-0 z-[61] bg-background border-b border-border shadow-lg"
+    <Dialog open={open} onOpenChange={(o) => !o && onClose()}>
+      <DialogContent
+        showCloseButton={false}
+        onOpenAutoFocus={(e) => {
+          e.preventDefault()
+          inputRef.current?.focus()
+        }}
+        className="top-[8vh] translate-y-0 sm:max-w-2xl max-w-[calc(100%-1.5rem)] p-0 gap-0 overflow-hidden rounded-lg border-border"
       >
+        <DialogTitle className="sr-only">Zoeken</DialogTitle>
+
         {/* Input row */}
-        <div className="container mx-auto px-4 md:px-6 flex items-center gap-3 h-16 md:h-20">
+        <div className="flex items-center gap-3 h-16 px-5 border-b border-border">
           <Search className="w-5 h-5 text-muted-foreground flex-shrink-0" aria-hidden="true" />
           <input
             ref={inputRef}
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={handleKeyDown}
+            onKeyDown={(e) => { if (e.key === 'Enter') submit(query) }}
             placeholder="Zoek op product, merk of categorie..."
             className="flex-1 bg-transparent font-sans text-lg text-foreground placeholder:text-muted-foreground focus:outline-none"
             aria-label="Zoekterm"
             autoComplete="off"
           />
-          <button
-            onClick={onClose}
-            className="w-11 h-11 flex items-center justify-center text-muted-foreground hover:text-foreground rounded-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          <DialogClose
             aria-label="Zoeken sluiten"
+            className="w-9 h-9 flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring flex-shrink-0"
           >
-            <X className="w-5 h-5" aria-hidden="true" />
-          </button>
+            <X className="w-4 h-4" aria-hidden="true" />
+          </DialogClose>
         </div>
 
-        {/* Suggestions panel */}
-        <div className="container mx-auto px-4 md:px-6 pb-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-            {/* Left: recent + popular */}
+        {/* Body */}
+        <div className="max-h-[60vh] overflow-y-auto px-5 py-5">
+          {hasSuggestions ? (
+            <>
+              <p className="font-sans text-xs uppercase tracking-widest text-muted-foreground mb-3">
+                Producten
+              </p>
+              <ul className="flex flex-col gap-1">
+                {suggestions.map((product) => (
+                  <li key={product.slug}>
+                    <Link
+                      href={`/winkel/${product.categorySlug}/${product.slug}/`}
+                      onClick={onClose}
+                      className="flex items-center gap-3 group min-h-[56px] p-2 -mx-2 rounded-sm hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      <div className="relative w-12 h-12 rounded-sm overflow-hidden bg-secondary flex-shrink-0">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          className="object-cover"
+                          unoptimized
+                          sizes="48px"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="font-sans text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
+                          {product.name}
+                        </p>
+                        <p className="font-sans text-xs text-muted-foreground">
+                          {product.brand} &middot; {product.categoryLabel}
+                        </p>
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0" aria-hidden="true" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <button
+                onClick={() => submit(query)}
+                className="mt-3 w-full flex items-center justify-center gap-2 font-sans text-sm text-primary hover:text-primary/80 transition-colors border-t border-border pt-4 min-h-[44px]"
+              >
+                Bekijk alle resultaten voor &ldquo;{query.trim()}&rdquo;
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </button>
+            </>
+          ) : (
             <div className="flex flex-col gap-6">
               {recent.length > 0 && (
                 <div>
                   <p className="font-sans text-xs uppercase tracking-widest text-muted-foreground mb-3">
-                    Recent
+                    Recent gezocht
                   </p>
                   <ul className="flex flex-col gap-1">
                     {recent.map((term) => (
@@ -196,62 +201,16 @@ export function SearchOverlay({ open, onClose }: SearchOverlayProps) {
                   ))}
                 </ul>
               </div>
-            </div>
 
-            {/* Right: live product suggestions */}
-            <div>
-              {suggestions.length > 0 && (
-                <>
-                  <p className="font-sans text-xs uppercase tracking-widest text-muted-foreground mb-3">
-                    Producten
-                  </p>
-                  <ul className="flex flex-col gap-3">
-                    {suggestions.map((product) => (
-                      <li key={product.slug}>
-                        <Link
-                          href={`/winkel/${product.categorySlug}/${product.slug}/`}
-                          onClick={onClose}
-                          className="flex items-center gap-3 group min-h-[56px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-                        >
-                          <div className="relative w-12 h-12 rounded-sm overflow-hidden bg-secondary flex-shrink-0">
-                            <Image
-                              src={product.image}
-                              alt={product.name}
-                              fill
-                              className="object-cover"
-                              unoptimized
-                            />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p className="font-sans text-sm font-medium text-foreground truncate group-hover:text-primary transition-colors">
-                              {product.name}
-                            </p>
-                            <p className="font-sans text-xs text-muted-foreground">
-                              {product.brand} &middot; {product.categoryLabel}
-                            </p>
-                          </div>
-                          <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors flex-shrink-0" aria-hidden="true" />
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link
-                    href={`/zoeken/?q=${encodeURIComponent(query.trim())}`}
-                    onClick={() => { saveRecent(query.trim()); onClose() }}
-                    className={cn(
-                      'mt-4 flex items-center gap-2 font-sans text-sm text-primary hover:text-primary/80 transition-colors',
-                      'border-t border-border pt-4 min-h-[44px]'
-                    )}
-                  >
-                    Bekijk alle resultaten voor &ldquo;{query}&rdquo;
-                    <ArrowRight className="w-4 h-4" aria-hidden="true" />
-                  </Link>
-                </>
+              {query.trim().length >= 2 && (
+                <p className="font-sans text-sm text-muted-foreground">
+                  Geen producten gevonden voor &ldquo;{query.trim()}&rdquo;. Druk op Enter om alle resultaten te bekijken.
+                </p>
               )}
             </div>
-          </div>
+          )}
         </div>
-      </div>
-    </>
+      </DialogContent>
+    </Dialog>
   )
 }
