@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 }
 
 const body = `
-<p>Rupose (Rijksstraatweg 167, 9752 BE Haren, KVK: 12345678) verwerkt persoonsgegevens in overeenstemming met de <strong>Algemene Verordening Gegevensbescherming (AVG)</strong>. In deze verklaring leggen wij uit welke gegevens wij verzamelen, waarom, en hoe wij deze beschermen.</p>
+<p>Rupose (Rijksstraatweg 167, 9752 BE Haren, KVK: 78448476) verwerkt persoonsgegevens in overeenstemming met de <strong>Algemene Verordening Gegevensbescherming (AVG)</strong>. In deze verklaring leggen wij uit welke gegevens wij verzamelen, waarom, en hoe wij deze beschermen.</p>
 
 <p><strong>Welke gegevens verzamelen wij?</strong></p>
 <p>Bij het plaatsen van een bestelling verwerken wij: naam, adres, e-mailadres, telefoonnummer en betaalgegevens. Bij het aanmaken van een account bewaren wij uw inloggegevens (e-mail en gehashed wachtwoord). Bij het bezoeken van onze website verzamelen wij anonieme analytische gegevens (bezoekersstatistieken) via cookieloze analytics.</p>

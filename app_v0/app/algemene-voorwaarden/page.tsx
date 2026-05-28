@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 }
 
 const body = `
-<p>Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, bestellingen en overeenkomsten van Rupose (Rijksstraatweg 167, 9752 BE Haren, KVK: 12345678, BTW: NL123456789B01).</p>
+<p>Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, bestellingen en overeenkomsten van Rupose (Rijksstraatweg 167, 9752 BE Haren, KVK: 78448476).</p>
 
 <p><strong>Artikel 1 &mdash; Definities</strong></p>
 <p>Rupose: de eenmanszaak/BV onder de naam Rupose, ingeschreven bij de Kamer van Koophandel. Klant: iedere natuurlijke of rechtspersoon die een overeenkomst sluit met Rupose. Overeenkomst: de koopovereenkomst die tot stand komt na acceptatie van een bestelling door Rupose.</p>
