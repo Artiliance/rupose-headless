@@ -11,7 +11,7 @@ export function loadGooglePlaces(apiKey: string): Promise<any> {
 
   loadPromise = new Promise((resolve, reject) => {
     const s = document.createElement('script')
-    s.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&language=nl&region=NL`
+    s.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&language=nl&region=NL&loading=async&v=weekly`
     s.async = true
     s.defer = true
     s.onload = () => resolve((window as any).google)

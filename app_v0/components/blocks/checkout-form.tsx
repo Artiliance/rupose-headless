@@ -40,39 +40,41 @@ export function CheckoutForm() {
   const [payment, setPayment] = useState('ideal')
   const router = useRouter()
 
-  // Google adres-autocomplete op het straatveld -> vult Woo-velden straat/postcode/plaats.
-  // Optionele enhancement: zonder NEXT_PUBLIC_GOOGLE_MAPS_API_KEY doet de checkout gewoon niets extra's.
+  // Google adres-zoeker (PlaceAutocompleteElement, toekomstvast) -> vult de Woo-velden
+  // straat/postcode/plaats. Optionele enhancement: zonder key gebeurt er niets extra's.
   useEffect(() => {
     const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
     if (!key) return
-    let ac: any
+    let el: any
     loadGooglePlaces(key)
-      .then((g: any) => {
-        const streetEl = document.getElementById('co-street') as HTMLInputElement | null
-        if (!streetEl || !g?.maps?.places) return
-        ac = new g.maps.places.Autocomplete(streetEl, {
-          componentRestrictions: { country: 'nl' },
-          fields: ['address_components'],
-          types: ['address'],
-        })
-        ac.addListener('place_changed', () => {
-          const comps: any[] = ac.getPlace()?.address_components || []
-          const get = (t: string) => comps.find((c) => c.types.includes(t))?.long_name || ''
+      .then(async (g: any) => {
+        const lib = await g.maps.importLibrary('places')
+        const container = document.getElementById('co-address-ac')
+        if (!container || container.childElementCount > 0 || !lib?.PlaceAutocompleteElement) return
+        el = new lib.PlaceAutocompleteElement({ includedRegionCodes: ['nl'] })
+        el.style.width = '100%'
+        container.appendChild(el)
+        el.addEventListener('gmp-select', async (e: any) => {
+          const place = e.placePrediction.toPlace()
+          await place.fetchFields({ fields: ['addressComponents'] })
+          const comps: any[] = place.addressComponents || []
+          const get = (t: string) => comps.find((c) => c.types?.includes(t))?.longText || ''
           const route = get('route')
           const nr = get('street_number')
           const zip = get('postal_code')
           const city = get('locality') || get('postal_town') || get('administrative_area_level_2')
-          const zipEl = document.getElementById('co-zip') as HTMLInputElement | null
-          const cityEl = document.getElementById('co-city') as HTMLInputElement | null
-          if (route) streetEl.value = `${route} ${nr}`.trim()
-          if (zipEl && zip) zipEl.value = zip
-          if (cityEl && city) cityEl.value = city
+          const set = (id: string, v: string) => {
+            const x = document.getElementById(id) as HTMLInputElement | null
+            if (x && v) x.value = v
+          }
+          set('co-street', `${route} ${nr}`.trim())
+          set('co-zip', zip)
+          set('co-city', city)
         })
       })
       .catch(() => {})
     return () => {
-      const g = (window as any).google
-      if (ac && g?.maps?.event) g.maps.event.clearInstanceListeners(ac)
+      el?.remove?.()
     }
   }, [])
 
@@ -121,6 +123,11 @@ export function CheckoutForm() {
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="co-phone" className="font-sans text-sm font-medium">Telefoonnummer</Label>
                   <Input id="co-phone" type="tel" autoComplete="tel" className="rounded-sm h-11 font-sans text-base" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="font-sans text-sm font-medium text-foreground">Zoek je adres</span>
+                  <div id="co-address-ac" className="[&_*]:rounded-sm" />
+                  <p className="font-sans text-xs text-muted-foreground">Begin met typen en kies je adres — straat, postcode en plaats worden automatisch ingevuld.</p>
                 </div>
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="co-street" className="font-sans text-sm font-medium">Straat en huisnummer</Label>
