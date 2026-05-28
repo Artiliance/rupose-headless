@@ -146,7 +146,7 @@ export function ProductInfo({ product, onColorImageChange }: ProductInfoProps) {
         {/* Add to cart */}
         <Button
           onClick={handleAddToCart}
-          disabled={!product.inStock}
+          disabled={!product.sizes?.length}
           className={cn(
             "flex-1 h-12 font-sans text-base tracking-wide rounded-sm transition-all duration-200",
             addedFeedback

@@ -39,6 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${product.name} | Rupose`,
     description: product.shortDesc,
+    alternates: { canonical: `/winkel/${product.categorySlug}/${product.slug}/` },
     openGraph: {
       title: `${product.name} | Rupose`,
       description: product.shortDesc,

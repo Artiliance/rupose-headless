@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${cat.name} | Rupose`,
     description: cat.intro,
+    alternates: { canonical: `/winkel/${cat.slug}/` },
   }
 }
 
