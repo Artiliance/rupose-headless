@@ -17,37 +17,37 @@ const mockOrders: Record<string, {
   payment: string;
 }> = {
   'ORD-1042': {
-    id: 'ORD-1042', date: '22 mei 2026', total: '€ 179,00', status: 'behandeling',
+    id: 'ORD-1042', date: '22 mei 2026', total: '€ 350,95', status: 'behandeling',
     items: [
-      { name: 'Bella Donna Hoeslaken Jersey',  variant: 'Wit, 90x200 cm',  qty: 1, price: '€ 89,00',  image: `${CDN}/hoeslakens/bella-donna-jersey-wit.jpg` },
-      { name: 'Yumeko Percale Kussensloop',    variant: 'Ivoor, 60x70 cm', qty: 2, price: '€ 45,00',  image: `${CDN}/kussens/yumeko-percale-kussensloop-ivoor.jpg` },
+      { name: 'Bella Donna Jersey hoeslaken',        variant: 'Wit, 90x200 cm', qty: 1, price: '€ 52,95',  image: `${CDN}/heroes/Formesse_Bella-Donna-Jersey_Stapel-scaled.jpg` },
+      { name: 'Texeler Bovenste Beste hoofdkussen',  variant: '60x70 cm',       qty: 2, price: '€ 149,00', image: `${CDN}/heroes/MCD9710-groot.jpeg` },
     ],
     shipping: { name: 'Sofie de Vries', street: 'Herestraat 42', city: '9711 LA Groningen' },
     billing:  { name: 'Sofie de Vries', street: 'Herestraat 42', city: '9711 LA Groningen' },
     payment: 'iDEAL',
   },
   'ORD-1031': {
-    id: 'ORD-1031', date: '14 mei 2026', total: '€ 89,00', status: 'verzonden',
+    id: 'ORD-1031', date: '14 mei 2026', total: '€ 94,00', status: 'verzonden',
     items: [
-      { name: 'Essenza Satijn Dekbedovertrek', variant: 'Wit, 240x220 cm', qty: 1, price: '€ 89,00', image: `${CDN}/dekbedovertrekken/essenza-satijn-wit.jpg` },
+      { name: 'Plateau Molton Tencel', variant: 'Wit, 90x200 cm', qty: 1, price: '€ 94,00', image: `${CDN}/heroes/MCD9695-groot.jpeg` },
     ],
     shipping: { name: 'Sofie de Vries', street: 'Herestraat 42', city: '9711 LA Groningen' },
     billing:  { name: 'Sofie de Vries', street: 'Herestraat 42', city: '9711 LA Groningen' },
     payment: 'Creditcard',
   },
   'ORD-1024': {
-    id: 'ORD-1024', date: '3 april 2026', total: '€ 214,50', status: 'geleverd',
+    id: 'ORD-1024', date: '3 april 2026', total: '€ 159,00', status: 'geleverd',
     items: [
-      { name: 'Hefel Pure Cotton Dekbed',  variant: 'Warmteklasse 3, 240x220 cm', qty: 1, price: '€ 214,50', image: `${CDN}/dekbedden/hefel-pure-cotton-dekbed.jpg` },
+      { name: 'Hefel Pure Cotton topdekmatras', variant: '90x200 cm', qty: 1, price: '€ 159,00', image: `${CDN}/heroes/MCD9691-groot.jpeg` },
     ],
     shipping: { name: 'Sofie de Vries', street: 'Herestraat 42', city: '9711 LA Groningen' },
     billing:  { name: 'Sofie de Vries', street: 'Herestraat 42', city: '9711 LA Groningen' },
     payment: 'iDEAL',
   },
   'ORD-1018': {
-    id: 'ORD-1018', date: '18 februari 2026', total: '€ 59,00', status: 'retour',
+    id: 'ORD-1018', date: '18 februari 2026', total: '€ 49,95', status: 'retour',
     items: [
-      { name: 'Texeler Wollen Kussen', variant: 'Standaard, 60x70 cm', qty: 1, price: '€ 59,00', image: `${CDN}/kussens/texeler-wollen-kussen.jpg` },
+      { name: 'Bella Donna Jersey hoeslaken', variant: 'Antraciet, 80x200 cm', qty: 1, price: '€ 49,95', image: `${CDN}/heroes/Formesse_Bella-Donna-Jersey_Stapel-scaled.jpg` },
     ],
     shipping: { name: 'Sofie de Vries', street: 'Herestraat 42', city: '9711 LA Groningen' },
     billing:  { name: 'Sofie de Vries', street: 'Herestraat 42', city: '9711 LA Groningen' },

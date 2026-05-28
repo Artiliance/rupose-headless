@@ -17,19 +17,19 @@ export const metadata: Metadata = {
 const mockOrderLines = [
   {
     id: '1',
-    name: 'Bella Donna Hoeslaken Jersey',
+    name: 'Bella Donna Jersey hoeslaken',
     variant: 'Wit, 90x200 cm',
     qty: 1,
-    price: 89,
-    image: `${CDN}/hoeslakens/bella-donna-jersey-wit.jpg`,
+    price: 64.95,
+    image: `${CDN}/heroes/Formesse_Bella-Donna-Jersey_Stapel-scaled.jpg`,
   },
   {
     id: '2',
-    name: 'Yumeko Percale Kussensloop',
-    variant: 'Ivoor, 60x70 cm',
+    name: 'Texeler Bovenste Beste hoofdkussen',
+    variant: 'Standaard, 60x70 cm',
     qty: 2,
-    price: 45,
-    image: `${CDN}/kussens/yumeko-percale-kussensloop-ivoor.jpg`,
+    price: 149,
+    image: `${CDN}/heroes/MCD9710-groot.jpeg`,
   },
 ]
 
@@ -164,10 +164,10 @@ export default function BedanktPage() {
                 </a>{' '}
                 of{' '}
                 <a
-                  href="tel:+31503180234"
+                  href="tel:+31505344235"
                   className="text-primary hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                 >
-                  050 318 02 34
+                  050 534 4235
                 </a>
                 .
               </p>

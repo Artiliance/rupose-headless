@@ -46,12 +46,13 @@ export function CheckoutForm() {
     const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
     if (!key) return
     let el: any
+    let cancelled = false
     loadGooglePlaces(key)
       .then(async (g: any) => {
-        const lib = await g.maps.importLibrary('places')
+        const { PlaceAutocompleteElement } = await g.maps.importLibrary('places')
         const container = document.getElementById('co-address-ac')
-        if (!container || container.childElementCount > 0 || !lib?.PlaceAutocompleteElement) return
-        el = new lib.PlaceAutocompleteElement({ includedRegionCodes: ['nl'] })
+        if (cancelled || !container || container.childElementCount > 0 || !PlaceAutocompleteElement) return
+        el = new PlaceAutocompleteElement({ includedRegionCodes: ['nl'] })
         el.style.width = '100%'
         container.appendChild(el)
         el.addEventListener('gmp-select', async (e: any) => {
@@ -72,8 +73,11 @@ export function CheckoutForm() {
           set('co-city', city)
         })
       })
-      .catch(() => {})
+      .catch((err) => {
+        console.error('[checkout] Google Places adres-autocomplete kon niet laden:', err)
+      })
     return () => {
+      cancelled = true
       el?.remove?.()
     }
   }, [])
