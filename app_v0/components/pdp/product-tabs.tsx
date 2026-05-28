@@ -1,5 +1,6 @@
 "use client";
 
+import { Droplets, Wind, Package, Sparkles } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Product } from "@/lib/products";
 
@@ -97,37 +98,46 @@ export function ProductTabs({ product }: ProductTabsProps) {
             Goed onderhoud verlengt de levensduur van uw beddengoed aanzienlijk
             en behoudt de kwaliteit en comfort van uw investering.
           </p>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-x-8 gap-y-7">
             {[
               {
+                icon: Droplets,
                 title: "Wassen",
                 body: "Volg altijd het wasadvies op het label. De meeste producten van Rupose zijn wasbaar op 60°C voor een hygiënische reiniging.",
               },
               {
+                icon: Wind,
                 title: "Drogen",
                 body: "Gebruik bij voorkeur de droger op een lage temperatuur of laat het product luchten op een droogrek. Vermijd direct zonlicht voor gekleurde producten.",
               },
               {
+                icon: Package,
                 title: "Opslaan",
-                body: "Bewaar schoon en droog beddengoed in een ademende katoenen zak of het originele verpakking. Vermijd plastic zakken, want die houden vocht vast.",
+                body: "Bewaar schoon en droog beddengoed in een ademende katoenen zak of de originele verpakking. Vermijd plastic zakken, want die houden vocht vast.",
               },
               {
+                icon: Sparkles,
                 title: "Luchten",
                 body: "Laat uw dekbed en kussens regelmatig luchten, het liefst in de buitenlucht op een droge dag. Dit vermindert stofmijten en frist de vulling op.",
               },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="bg-sand/50 rounded-sm p-5 border border-border"
-              >
-                <h4 className="font-serif text-xl font-medium text-brown mb-2">
-                  {item.title}
-                </h4>
-                <p className="font-sans text-base text-brown-muted leading-relaxed">
-                  {item.body}
-                </p>
-              </div>
-            ))}
+            ].map((item) => {
+              const Icon = item.icon;
+              return (
+                <div key={item.title} className="flex gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary [&>svg]:w-5 [&>svg]:h-5">
+                    <Icon aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-lg font-medium text-brown mb-1">
+                      {item.title}
+                    </h4>
+                    <p className="font-sans text-base text-brown-muted leading-relaxed">
+                      {item.body}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </TabsContent>
