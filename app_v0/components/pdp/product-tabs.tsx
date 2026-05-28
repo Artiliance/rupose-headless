@@ -35,8 +35,9 @@ export function ProductTabs({ product }: ProductTabsProps) {
             [&_p]:mb-4 [&_p]:text-base
             [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-4 [&_ul>li]:mb-2 [&_ul>li]:text-base
             [&_strong]:text-brown [&_strong]:font-medium"
-          dangerouslySetInnerHTML={{ __html: product.longDescriptionHtml }}
-        />
+        >
+          <p>{product.longDesc}</p>
+        </div>
       </TabsContent>
 
       {/* Specificaties tab */}

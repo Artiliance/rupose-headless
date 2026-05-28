@@ -7,6 +7,10 @@ import { ContentSection } from '@/components/blocks/content-section'
 import { AdviceTeaser } from '@/components/blocks/advice-teaser'
 import { NewsletterCta } from '@/components/blocks/newsletter-cta'
 import { getArticleBySlug, getRelatedArticles, getAllArticles } from '@/lib/articles'
+import { JsonLd } from '@/components/seo/json-ld'
+
+const SITE = 'https://rupose.nl'
+const LOGO = 'https://cdn.jsdelivr.net/gh/Artiliance/rupose-headless@main/public/images/brands/Rupose-logo-by-homan.svg'
 
 export async function generateStaticParams() {
   return getAllArticles().map((article) => ({ slug: article.slug }))
@@ -36,8 +40,26 @@ export default async function BlogArticlePage({ params }: PageProps) {
 
   const related = getRelatedArticles(slug, 3)
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    image: [article.image],
+    datePublished: article.publishedAt,
+    dateModified: article.publishedAt,
+    description: article.excerpt,
+    author: { '@type': 'Organization', name: 'Rupose', url: SITE },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Rupose',
+      logo: { '@type': 'ImageObject', url: LOGO },
+    },
+    mainEntityOfPage: `${SITE}/slaapadvies/${article.slug}/`,
+  }
+
   return (
     <main className="pt-28 md:pt-32">
+      <JsonLd data={articleSchema} />
 
       {/* ── Breadcrumbs ── */}
       <div className="bg-secondary/30 border-b border-border">

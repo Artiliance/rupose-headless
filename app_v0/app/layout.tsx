@@ -7,7 +7,38 @@ import { SiteFooter } from '@/components/site/site-footer'
 import { FloatingContact } from '@/components/blocks/floating-contact'
 import { BackToTop } from '@/components/blocks/back-to-top'
 import { ExitIntentPopup } from '@/components/blocks/exit-intent-popup'
+import { JsonLd } from '@/components/seo/json-ld'
 import './globals.css'
+
+const LOGO = 'https://cdn.jsdelivr.net/gh/Artiliance/rupose-headless@main/public/images/brands/Rupose-logo-by-homan.svg'
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Rupose',
+  url: 'https://rupose.nl',
+  logo: LOGO,
+  image: LOGO,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Rijksstraatweg 167',
+    postalCode: '9752 BE',
+    addressLocality: 'Haren',
+    addressCountry: 'NL',
+  },
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Rupose',
+  url: 'https://rupose.nl',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://rupose.nl/zoeken?q={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
+}
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,9 +62,11 @@ export const metadata: Metadata = {
     locale: 'nl_NL',
     type: 'website',
   },
+  // DEMO: noindex zolang dit op een demo-/vercel.app-URL draait.
+  // Bij productie-launch op rupose.nl: zet index/follow op true.
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
   },
 }
 
@@ -52,6 +85,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap"
           rel="stylesheet"
         />
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
       </head>
       <body className={`${inter.className} font-sans antialiased`}>
         <SiteHeader />

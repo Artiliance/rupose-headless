@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Hero } from '@/components/blocks/hero'
 import { FaqAccordion } from '@/components/blocks/faq-accordion'
 import { CtaBanner } from '@/components/blocks/cta-banner'
+import { JsonLd } from '@/components/seo/json-ld'
 
 export const metadata: Metadata = {
   title: 'Veelgestelde vragen | Rupose',
@@ -62,8 +63,19 @@ const faqItems = [
 ]
 
 export default function FaqPage() {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  }
+
   return (
     <main>
+      <JsonLd data={faqSchema} />
       <Hero
         variant="simple"
         eyebrow="Klantenservice"

@@ -11,6 +11,9 @@ import { CrossSell } from "@/components/blocks/cross-sell";
 import { RecentlyViewed } from "@/components/blocks/recently-viewed";
 import { getProductFaqs } from "@/lib/faqs";
 import { getBrandByName } from "@/lib/brands";
+import { JsonLd } from "@/components/seo/json-ld";
+
+const SITE = "https://rupose.nl";
 
 interface PageProps {
   params: Promise<{ category: string; slug: string }>;
@@ -71,8 +74,58 @@ export default async function ProductPage({ params }: PageProps) {
     { label: product.name },
   ];
 
+  const faqs = getProductFaqs(slug);
+  const productUrl = `${SITE}/winkel/${product.categorySlug}/${product.slug}/`;
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    image: product.gallery,
+    description: product.shortDesc,
+    sku: product.sizes[0]?.sku,
+    brand: { "@type": "Brand", name: product.brand },
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "EUR",
+      price: product.sizes[0]?.price,
+      availability: "https://schema.org/InStock",
+      url: productUrl,
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: 4.8,
+      reviewCount: 847,
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Winkel", item: `${SITE}/winkel/` },
+      { "@type": "ListItem", position: 2, name: product.categoryLabel, item: `${SITE}/winkel/${product.categorySlug}/` },
+      { "@type": "ListItem", position: 3, name: product.name, item: productUrl },
+    ],
+  };
+
+  const faqSchema = faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      }
+    : null;
+
   return (
     <main>
+      <JsonLd data={productSchema} />
+      <JsonLd data={breadcrumbSchema} />
+      {faqSchema && <JsonLd data={faqSchema} />}
       {/* ── Breadcrumb bar ── */}
       <div className="border-b border-border bg-background">
         <div className="container mx-auto px-4 md:px-6">

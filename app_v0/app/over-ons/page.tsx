@@ -4,7 +4,7 @@ import { ContentSection } from '@/components/blocks/content-section'
 import { FeatureGrid } from '@/components/blocks/feature-grid'
 import { ReviewsCarousel } from '@/components/blocks/reviews-carousel'
 import { NewsletterCta } from '@/components/blocks/newsletter-cta'
-import { Heart, Users, Sprout, Star } from 'lucide-react'
+import { Heart, Users, Sprout, Star, MapPin, ShieldCheck } from 'lucide-react'
 import { allReviews } from '@/lib/reviews'
 
 export const metadata: Metadata = {
@@ -39,6 +39,18 @@ const values = [
     title: 'Europese kwaliteit',
     description:
       'Onze partners produceren in Duitsland, Oostenrijk en Nederland. Wij geloven dat je kunt voelen waar iets gemaakt is. Europees vakmanschap spreekt voor zich.',
+  },
+  {
+    icon: <MapPin />,
+    title: 'Bezoek ons in Haren',
+    description:
+      'Naast onze webshop staan we ook gewoon voor je klaar in onze winkel in Haren. Kom langs om producten te voelen, te vergelijken en persoonlijk advies te krijgen.',
+  },
+  {
+    icon: <ShieldCheck />,
+    title: 'Zorgeloos kopen',
+    description:
+      'Gratis verzending vanaf 75 euro, 30 dagen retourrecht en veilig betalen via iDEAL of creditcard. Zo koop je bij Rupose zonder risico.',
   },
 ]
 
